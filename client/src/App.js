@@ -1,23 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
+import Task from './Components/Task';
+import TaskGroup from './Components/TaskGroup';
+
+const task_list = [
+  {
+    title:"Task 1",
+    description:"This is the first task"
+  },
+  {
+    title:"Task 2",
+    description:"This is the second task"
+  },
+  {
+    title:"Task 3",
+    description:"This is the third task"
+  },
+]
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <TaskGroup title='To-Do' tasks={task_list}/>
+      <TaskGroup title='In Progress' tasks={task_list}/>
+      <TaskGroup title='Completed' tasks={task_list}/>
     </div>
   );
 }
