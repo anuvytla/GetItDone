@@ -7,6 +7,18 @@ const typeDefs = gql`
 		email: String
 	}
 
+	type Task {
+		_id: ID
+		title: String
+		description: String
+	}
+
+	type TaskBoard {
+		_id: ID
+		title: String
+		description: String
+	}
+
 	type Query {
 		users: [User]
 	}
