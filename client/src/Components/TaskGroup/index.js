@@ -1,23 +1,26 @@
 import Task from '../Task';
+import AddTask from '../AddTask';
 import './index.css';
 import { Droppable } from 'react-beautiful-dnd';
 
-const TaskGroup = ({title, tasks, groupId}) => {
+const TaskGroup = ({taskBoard, boardId}) => {
     return(
         <>
         <div className='task-group'>
-        <h1>{title}</h1>
-        <Droppable droppableId={groupId}>
+        <h1>{taskBoard.title}</h1>
+        <Droppable droppableId={boardId}>
             {(provided) => (
                 <div ref={provided.innerRef} 
                     {...provided.droppableProps}
                 >
-                    {tasks.map((item, index) => (
+                    {taskBoard.tasks.map((item, index) => (
                         <Task task={item} key={item.id} index={index}/>
                     ))}
+                    {provided.placeholder}
                 </div>
             )}
         </Droppable>
+        <AddTask/>
         </div>
         </>
     )
