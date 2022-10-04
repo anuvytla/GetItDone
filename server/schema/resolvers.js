@@ -1,4 +1,4 @@
-const { User } = require("../models");
+const { User, Task } = require("../models");
 
 const resolvers = {
 	Query: {
@@ -25,6 +25,23 @@ const resolvers = {
         }
 
 	},
+
+	 // field resolvers
+	 User: {
+        // root for field resolvers
+        tasks: async (root) => {
+            console.log(root);
+            return await Task.find({ userId: root._id});
+        },
+    },
+
+    Task: {
+        // root for field resolvers
+        user: async (root) => {
+            console.log(root);
+            return await User.findById(root.userId);
+        },
+    },
 };
 
 module.exports = resolvers;

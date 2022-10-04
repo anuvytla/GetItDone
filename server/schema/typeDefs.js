@@ -5,6 +5,7 @@ const typeDefs = gql`
 		_id: ID
 		username: String
 		email: String
+		tasks: [Task]
 		
 	}
 
@@ -12,6 +13,7 @@ const typeDefs = gql`
 		_id: ID
 		title: String
 		description: String
+		user: User
 	}
 
 	type TaskBoard {

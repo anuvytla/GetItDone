@@ -11,9 +11,11 @@ import './App.css';
 import Auth from './utils/auth/auth';
 import Dashboard from './Components/Dashboard';
 import Header from './Components/Header';
-import Footer from './Components/Footer';
+// comment out to run server
+// import Footer from './Components/Footer';
 import Login from './Components/Login';
 import Signup from './Components/Signup';
+
 import Home from './Components/Home';
 
 // Construct our main GraphQL API endpoint
@@ -49,6 +51,7 @@ function App() {
           <Header />
           <div className="container">
             <Routes>
+            
             <Route 
                 path="/" 
                 element={Auth.loggedIn() ?
@@ -68,7 +71,8 @@ function App() {
               />
             </Routes>
           </div>
-          <Footer />
+           {/* comment out to run server */}
+          {/* <Footer /> */}
         </div>
       </Router>
     </ApolloProvider>

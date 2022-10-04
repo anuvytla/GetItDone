@@ -3,10 +3,10 @@ const { ApolloServer } = require("apollo-server-express");
 
 const db = require("./config/connection");
 
-// const mongoose = require("mongoose");
+const mongoose = require("mongoose");
 const { typeDefs, resolvers } = require("./schema");
 
-// mongoose.set("debug", true);
+mongoose.set("debug", true);
 const PORT = process.env.PORT || 3001;
 
 const app = express();
