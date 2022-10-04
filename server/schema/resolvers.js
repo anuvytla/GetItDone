@@ -9,6 +9,13 @@ const resolvers = {
 				throw new Error(err);
 			}
 		},
+        tasks: async () => {
+			try {
+				return await Task.find();
+			} catch (err) {
+				throw new Error(err);
+			}
+		},
 	},
 	Mutation: {
 		createUser: async (_root, args) => {
