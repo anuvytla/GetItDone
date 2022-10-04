@@ -20,7 +20,7 @@ const TaskGroup = ({taskBoard, boardId}) => {
                 </div>
             )}
         </Droppable>
-        <AddTask/>
+        <AddTask boardId={boardId}/>
         </div>
         </>
     )
