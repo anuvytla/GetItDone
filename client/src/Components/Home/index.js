@@ -1,6 +1,6 @@
 import { useQuery } from "@apollo/client";
 
-import { FETCH_USERS_QUERY } from "../../utils/queries/fetchAllUsers";
+import { FETCH_USERS_QUERY } from "../../utils/queries/fetchAllUsers.js"
 
 // page for user home
 const Home = () => {
@@ -9,7 +9,7 @@ const Home = () => {
 
     return (
         <div>
-            <h1>Users</h1>
+            <h1>Registered Users</h1>
             {
                 loading ?
                     <p>Just a moment....</p>
@@ -17,8 +17,8 @@ const Home = () => {
                     data?.users.map(user =>{
                         return (
                             <div key={user._id}>
-                                <h1>Username: {user.username}</h1>
-                                <h1>Email: {user.email}</h1>
+                                <h2>Username: {user.username}</h2>
+                                <h2>Email: {user.email}</h2>
                             </div>
                         )
                     })
