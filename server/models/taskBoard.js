@@ -4,11 +4,10 @@ const taskBoardSchema = new Schema({
 	id: Number,
 	title: String,
 	description: String,
-	// probably add a user_id to this that refers to user id
-	// userId: {
-	// 	type: Schema.Types.ObjectId,
-	// 	ref: "User",
-	// },
+	projectId: {
+		type: Schema.Types.ObjectId,
+		ref: "Project",
+	},
 });
 
 module.exports = model("TaskBoard", taskBoardSchema);
