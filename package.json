@@ -19,7 +19,7 @@
 		"url": "https://github.com/anuvytla/GetItDone/issues"
 	},
 	"homepage": "https://github.com/anuvytla/GetItDone#readme",
-	"dependencies": {
+	"dependencies": {		
 		"concurrently": "^7.4.0"
 	}
 }
