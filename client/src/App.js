@@ -15,6 +15,8 @@ import Login from './Components/Login';
 import Signup from './Components/Signup';
 import Donation from './Components/Donation';
 import Notifications from './Components/Notifications';
+import Home from './Components/Home';
+import Footer from './Components/Footer';
 import { ProjectProvider } from './utils/context/ProjectContext';
 
 
@@ -55,7 +57,7 @@ function App() {
               <Route 
                   path="/" 
                   element={Auth.loggedIn() ?
-                  (<Dashboard />) : (<Dashboard />)} 
+                  (<Dashboard />) : (<Home />)} 
                 />
                 <Route 
                   path="/dashboard" 
@@ -79,6 +81,7 @@ function App() {
                 />
               </Routes>
             </div>
+            <Footer />
           </div>
         </Router>
       </ProjectProvider>
