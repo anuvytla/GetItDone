@@ -1,5 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import {
+  faHouse,
+  faBell,
+  faSquareCheck,
+  faDollarSign,
+  faCircleInfo,
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+
 import Auth from '../../utils/auth/auth';
 
 const Header = () => {
@@ -19,9 +29,49 @@ const Header = () => {
         
         <div className='justify-flex-end'>
           {Auth.loggedIn() ? (
-            <button className="btn m-2" onClick={logout}>
-              Logout
-            </button>
+            <>
+              <NavLink 
+                exact="true"
+                activeclassname="active"
+                to="/dashboard">
+                <FontAwesomeIcon icon={faHouse} color="#4d4d4e" />
+              </NavLink>
+              
+              <NavLink 
+                exact="true"
+                activeclassname="active"
+                className="about-link"
+                to="/about">
+                <FontAwesomeIcon icon={faCircleInfo} color="#4d4d4e" />
+              </NavLink>
+
+              <NavLink 
+                exact="true"
+                activeclassname="active"
+                className="task-link"
+                to="/">
+                <FontAwesomeIcon icon={faSquareCheck} color="#4d4d4e" />
+              </NavLink>
+
+              <NavLink 
+                exact="true"
+                activeclassname="active"
+                className="notification-link"
+                to="/notifications">
+                <FontAwesomeIcon icon={faBell} color="#4d4d4e" />
+              </NavLink>
+
+              <NavLink 
+                exact="true"
+                activeclassname="active"
+                className="donation-link"
+                to="/donation">
+                <FontAwesomeIcon icon={faDollarSign} color="#4d4d4e" />
+              </NavLink>
+              <button className="btn btn-lg btn-light m-2" onClick={logout}>
+                Logout
+              </button>
+            </>
           ) : (
             <>
               <Link className="btn m-2" to="/login">
