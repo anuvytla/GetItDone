@@ -15,6 +15,7 @@ import Login from './Components/Login';
 import Signup from './Components/Signup';
 import Donation from './Components/Donation';
 import Notifications from './Components/Notifications';
+import { ProjectProvider } from './utils/context/ProjectContext';
 
 
 // Construct our main GraphQL API endpoint
@@ -45,40 +46,42 @@ function App() {
 
   return (
     <ApolloProvider client={client}>
-      <Router>
-        <div className="flex-column justify-flex-start min-100-vh">
-          <Header />
-          <div className="container">
-            <Routes>
-            <Route 
-                path="/" 
-                element={Auth.loggedIn() ?
-                (<Dashboard />) : (<Dashboard />)} 
-              />
+      <ProjectProvider>
+        <Router>
+          <div className="flex-column justify-flex-start min-100-vh">
+            <Header />
+            <div className="container">
+              <Routes>
               <Route 
-                path="/dashboard" 
-                element={<Dashboard />} 
-              />
-              <Route 
-                path="/login" 
-                element={<Login />} 
-              />
-              <Route 
-                path="/signup" 
-                element={<Signup />} 
-              />
-              <Route 
-                path="/donation" 
-                element={<Donation />} 
-              />
-              <Route 
-                path="/notifications" 
-                element={<Notifications />} 
-              />
-            </Routes>
+                  path="/" 
+                  element={Auth.loggedIn() ?
+                  (<Dashboard />) : (<Dashboard />)} 
+                />
+                <Route 
+                  path="/dashboard" 
+                  element={<Dashboard />} 
+                />
+                <Route 
+                  path="/login" 
+                  element={<Login />} 
+                />
+                <Route 
+                  path="/signup" 
+                  element={<Signup />} 
+                />
+                <Route 
+                  path="/donation" 
+                  element={<Donation />} 
+                />
+                <Route 
+                  path="/notifications" 
+                  element={<Notifications />} 
+                />
+              </Routes>
+            </div>
           </div>
-        </div>
-      </Router>
+        </Router>
+      </ProjectProvider>
     </ApolloProvider>
   );
 }

@@ -1,33 +1,43 @@
 import './index.css';
 import { useState } from 'react';
+import { useProjectContext } from '../../utils/context/ProjectContext';
 
-const AddTask = () => {
-    const [newTask, setNewTask] = useState('');
-    const [task, setTask] = useState([]);
+const AddTask = ({boardId}) => {
+    const { addTask } = useProjectContext();
+    const [taskTitle, setTaskTitle] = useState('');
+    const [taskDescription, setTaskDescription] = useState('');
     return (
-        <>
-            <label htmlFor='newTask'> New Task</label>
+        <div className='add-task-container'>
             <input
-                id='newTask'
-                value={newTask}
-                onChange={event => setNewTask(event.target.value)} />
-
-            <button className='newInput'
+                placeholder='Title'
+                id='taskTitle'
+                value={taskTitle}
+                onChange={event => setTaskTitle(event.target.value)} />
+            <input
+                placeholder='Description'
+                id='taskDescription'
+                value={taskDescription}
+                onChange={event => setTaskDescription(event.target.value)} />
+            <button className='addTask'
                 onClick={() => {
-                    if (newTask.trim().length === 0) {
+                    if (taskTitle.trim().length === 0) {
                         alert('Must enter valid task!');
                         return;
                     }
 
-                    task.push(newTask);
-                    setTask(task);
+                    let newTask = {
+                        title: taskTitle,
+                        description: taskDescription,
+                        urgency: 2,
+                        board_id: parseInt(boardId),
+                    }
+                    addTask(newTask);
+                    setTaskTitle('');
+                    setTaskDescription('');
                 }}>
                 Add Task
             </button>
-                
-
-                 
-        </>
+        </div>
     )
 }
 
