@@ -17,7 +17,7 @@
 
 
 const { AuthenticationError } = require('apollo-server-express');
-const { Profile } = require('../models');
+const { Profile, Task } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -28,6 +28,10 @@ const resolvers = {
 
     profile: async (parent, { profileId }) => {
       return Profile.findOne({ _id: profileId });
+    },
+
+    tasks: async (parent, { boardId }) => {
+      return Task.find({ boardId: boardId });
     },
   },
 
