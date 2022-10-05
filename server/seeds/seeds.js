@@ -1,21 +1,22 @@
-const { User, Task, TaskBoard } = require("../models");
+const { Profile, Task, TaskBoard } = require("../models");
+
 const db = require("../config/connection");
 
-const users = [
+const profiles = [
 	{
-		username: "bob",
-		email: "bob@email.com",
-		password: "password1",
+		"name": "bob",
+		"email": "bob@email.com",
+		"password": "password1",
 	},
 	{
-		username: "steve",
-		email: "steve@email.com",
-		password: "password2",
+		"name": "steve",
+		"email": "steve@email.com",
+		"password": "password2",
 	},
 	{
-		username: "jane",
-		email: "jane@email.com",
-		password: "password3",
+		"name": "jane",
+		"email": "jane@email.com",
+		"password": "password3",
 	},
 ];
 const tasks = [
@@ -44,7 +45,7 @@ const tasks = [
 		board_id: 1,
 	},
 	{
-		title: "get more lemons",
+		title: "get more lemons and limes",
 		description: "need by friday",
 		urgency: 1,
 		board_id: 2,
@@ -74,11 +75,11 @@ const taskBoard = [
 ];
 
 db.once("open", async () => {
-	await User.deleteMany({});
+	await Profile.deleteMany({});
 	await Task.deleteMany({});
 	await TaskBoard.deleteMany({});
 
-	const insertUsers = await User.insertMany(users);
+	const insertProfiles = await Profile.insertMany(profiles);
 	const insertTasks = await Task.insertMany(tasks);
 	const insertTaskBoard = await TaskBoard.insertMany(taskBoard);
 	console.log("seed = success");
