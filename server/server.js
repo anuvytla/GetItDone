@@ -1,17 +1,8 @@
 const express = require("express");
-<<<<<<< HEAD
-const path = require("path");
-const { ApolloServer } = require("apollo-server-express");
-
-const db = require("./config/connection");
-
-const mongoose = require("mongoose");
-=======
 const { ApolloServer } = require("apollo-server-express");
 const path = require('path');
 const { authMiddleware } = require('./utils/auth');
 
->>>>>>> c82ecd4571f3162a84bb7439167044a9ec54bec1
 const { typeDefs, resolvers } = require("./schema");
 const db = require("./config/connection");
 const mongoose = require("mongoose");
@@ -30,21 +21,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 if (process.env.NODE_ENV === 'production') {
-<<<<<<< HEAD
-	app.use(express.static(path.join(__dirname, '../client/build')));
-	app.get('*', (req, res) => {
-		res.sendFile(path.join(__dirname, '../client/build/index.html'))
-	});
-
-}
-
-db.once("open", async () => {
-	await server.start();
-	server.applyMiddleware({ app });
-=======
   app.use(express.static(path.join(__dirname, '../client/build')));
 }
->>>>>>> c82ecd4571f3162a84bb7439167044a9ec54bec1
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));

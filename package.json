@@ -6,14 +6,9 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"install": "cd server && npm i && cd ../client && npm i",
-<<<<<<< HEAD
-		"seeds": "cd server && npm run seeds",
-		"dev": "concurrently \"cd server && nodemon server.js\" \"cd client && npm start\""
-=======
 		"dev": "concurrently \"cd server && nodemon server.js\" \"cd client && npm start\"",
 		"seed": "cd server && npm run seed",
     "build": "cd client && npm run build"
->>>>>>> c82ecd4571f3162a84bb7439167044a9ec54bec1
 	},
 	"repository": {
 		"type": "git",
