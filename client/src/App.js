@@ -81,7 +81,7 @@ function App() {
                   element={<Notifications />} 
                 />
                 <Route 
-                  path="/kanban" 
+                  path="/kanban/:boardId" 
                   element={<Kanban />} 
                 />
               </Routes>

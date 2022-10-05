@@ -3,7 +3,7 @@ import './index.css'
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
-import TaskGroup from '../TaskGroup';
+import KanbanTaskGroup from '../KanbanTaskGroup';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { QUERY_TASKS_IN_BOARD } from '../../utils/queries/queries';
 import { InfinitySpin } from 'react-loader-spinner';
@@ -16,7 +16,8 @@ const Kanban = () => {
     variables: { boardId: boardId },
   });
 
-  console.log(data);
+  const tasks = data?.tasks || [];
+  console.log(tasks)
 
     // const { project, moveTask, isLoading } = useProjectContext();
     const kanbanBoards = ["To Do", "Doing", "Done"]
@@ -47,11 +48,11 @@ const Kanban = () => {
             />
         ) : (
             <DragDropContext onDragEnd={onDragEnd}>
-                {/* {
+                {
                     kanbanBoards.map(function(status) {
-                        return <TaskGroup key={taskBoardId} taskBoard={project.taskBoards[taskBoardId]} boardId={taskBoardId}/>
+                        return <KanbanTaskGroup key={status} status={status} tasks={tasks} boardId={boardId}/>
                     })
-                } */}
+                }
             </DragDropContext>
         )}
         </>
