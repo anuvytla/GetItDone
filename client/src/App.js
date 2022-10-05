@@ -11,12 +11,14 @@ import './App.css';
 import Auth from './utils/auth/auth';
 import Dashboard from './Components/Dashboard';
 import Header from './Components/Header';
-// comment out to run server
-// import Footer from './Components/Footer';
 import Login from './Components/Login';
 import Signup from './Components/Signup';
-
+import Donation from './Components/Donation';
+import Notifications from './Components/Notifications';
 import Home from './Components/Home';
+import Footer from './Components/Footer';
+import { ProjectProvider } from './utils/context/ProjectContext';
+
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -28,6 +30,7 @@ const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
   const token = localStorage.getItem('id_token');
   // return the headers to the context so httpLink can read them
+  console.log(headers, token);
   return {
     headers: {
       ...headers,
@@ -41,6 +44,8 @@ const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
+
+console.log(client.link);
 
 function App() {
 
@@ -58,23 +63,43 @@ function App() {
                 (<Dashboard />) : (<Home />)} 
               />
               <Route 
-                path="/dashboard" 
-                element={<Dashboard />} 
-              />
-              <Route 
-                path="/login" 
-                element={<Login />} 
-              />
-              <Route 
-                path="/signup" 
-                element={<Signup />} 
-              />
-            </Routes>
+                  path="/" 
+                  element={Auth.loggedIn() ?
+                  (<Dashboard />) : (<Home />)} 
+                />
+                <Route 
+                  path="/dashboard" 
+                  element={<Dashboard />} 
+                />
+                <Route 
+                  path="/login" 
+                  element={<Login />} 
+                />
+                <Route 
+                  path="/signup" 
+                  element={<Signup />} 
+                />
+                <Route 
+                  path="/donation" 
+                  element={<Donation />} 
+                />
+                <Route 
+                  path="/notifications" 
+                  element={<Notifications />} 
+                />
+              </Routes>
+            </div>
+            <Footer />
           </div>
+<<<<<<< HEAD
            {/* comment out to run server */}
           {/* <Footer /> */}
         </div>
       </Router>
+=======
+        </Router>
+      </ProjectProvider>
+>>>>>>> dbabe22543f3d5361345535f4dc9a4acb5583052
     </ApolloProvider>
   );
 }
