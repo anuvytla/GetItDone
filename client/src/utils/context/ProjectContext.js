@@ -7,6 +7,8 @@ export const useProjectContext = () => useContext(ProjectContext);
 
 // The provider is responsible for holding our state, updating the state, and persisting values to the children
 
+// below is the query to replace the below text I believe
+
 // query Tasks {
 //   tasks {
 //     _id
