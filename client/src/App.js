@@ -17,6 +17,7 @@ import Donation from './Components/Donation';
 import Notifications from './Components/Notifications';
 import Home from './Components/Home';
 import Footer from './Components/Footer';
+import Kanban from './Components/Kanban';
 import { ProjectProvider } from './utils/context/ProjectContext';
 
 
@@ -78,6 +79,10 @@ function App() {
                 <Route 
                   path="/notifications" 
                   element={<Notifications />} 
+                />
+                <Route 
+                  path="/kanban/:boardId" 
+                  element={<Kanban />} 
                 />
               </Routes>
             </div>

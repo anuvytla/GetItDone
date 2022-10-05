@@ -18,6 +18,9 @@ const typeDefs = gql`
     _id: ID
     title: String
     description: String
+    userId: ID
+    boardId: ID
+    status: String
   }
 
   type TaskBoard {
@@ -29,6 +32,7 @@ const typeDefs = gql`
   type Query {
     profiles: [Profile]!
     profile(profileId: ID!): Profile
+    tasks(boardId: ID!): [Task]!
   }
 
 type Mutation {
