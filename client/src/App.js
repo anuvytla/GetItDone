@@ -88,15 +88,8 @@ function App() {
             </div>
             <Footer />
           </div>
-<<<<<<< HEAD
-           {/* comment out to run server */}
-          {/* <Footer /> */}
-        </div>
-      </Router>
-=======
         </Router>
-      </ProjectProvider>
->>>>>>> dbabe22543f3d5361345535f4dc9a4acb5583052
+      {/* </ProjectProvider> */}
     </ApolloProvider>
   );
 }
