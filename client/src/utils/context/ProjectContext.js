@@ -106,13 +106,18 @@ export const ProjectProvider = ({ children }) => {
   const moveTask = (fromBoardId, toBoardId, fromIndex, toIndex) => {
     let sourceBoard = project.taskBoards[fromBoardId];
     let destinationBoard = project.taskBoards[toBoardId];
-    
+
     let sourceBoardTasks = Array.from(sourceBoard.tasks);
     let [movedTask] = sourceBoardTasks.splice(fromIndex, 1);
 
-    let destinationBoardTasks = Array.from(destinationBoard.tasks);
-    destinationBoardTasks.splice(toIndex, 0, movedTask);
+    let destinationBoardTasks;
+    if(fromBoardId === toBoardId) {
+      destinationBoardTasks = Array.from(sourceBoardTasks);
+    } else {
+      destinationBoardTasks = Array.from(destinationBoard.tasks);
+    }
 
+    destinationBoardTasks.splice(toIndex, 0, movedTask);
     let updatedSourceBoard = {...sourceBoard, tasks: sourceBoardTasks};
     let updatedDestinationBoard = {...destinationBoard, tasks: destinationBoardTasks};
 
