@@ -5,7 +5,6 @@ import {
   faBell,
   faSquareCheck,
   faDollarSign,
-  faCircleInfo,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -35,14 +34,6 @@ const Header = () => {
                 activeclassname="active"
                 to="/dashboard">
                 <FontAwesomeIcon icon={faHouse} color="#4d4d4e" />
-              </NavLink>
-              
-              <NavLink 
-                exact="true"
-                activeclassname="active"
-                className="about-link"
-                to="/about">
-                <FontAwesomeIcon icon={faCircleInfo} color="#4d4d4e" />
               </NavLink>
 
               <NavLink 
