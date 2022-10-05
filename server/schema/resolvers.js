@@ -1,54 +1,63 @@
-const { User, Task } = require("../models");
+// const { User } = require("../models");
+
+// const resolvers = {
+// 	Query: {
+// 		users: async () => {
+// 			try {
+// 				return await User.find();
+// 			} catch (err) {
+// 				throw new Error(err);
+// 			}
+// 		},
+// 	},
+// 	Mutation: {},
+// };
+
+// module.exports = resolvers;
+
+
+const { AuthenticationError } = require('apollo-server-express');
+const { Profile } = require('../models');
+const { signToken } = require('../utils/auth');
 
 const resolvers = {
-	Query: {
-		users: async () => {
-			try {
-				return await User.find();
-			} catch (err) {
-				throw new Error(err);
-			}
-		},
-        tasks: async () => {
-			try {
-				return await Task.find();
-			} catch (err) {
-				throw new Error(err);
-			}
-		},
-	},
-	Mutation: {
-		createUser: async (_root, args) => {
-            try {
-                const newUser = await User.create({
-                    username: args.username,
-                    email: args.email,
-                    password: args.password,
-                });
-                return newUser;
-            } catch (err) {
-                throw new Error(err);
-            }
-        }
-
-	},
-
-	 // field resolvers
-	 User: {
-        // root for field resolvers
-        tasks: async (root) => {
-            console.log(root);
-            return await Task.find({ userId: root._id});
-        },
+  Query: {
+    profiles: async () => {
+      return Profile.find();
     },
 
-    Task: {
-        // root for field resolvers
-        user: async (root) => {
-            console.log(root);
-            return await User.findById(root.userId);
-        },
+    profile: async (parent, { profileId }) => {
+      return Profile.findOne({ _id: profileId });
     },
+  },
+
+  Mutation: {
+    addProfile: async (parent, { name, email, password }) => {
+      const profile = await Profile.create({ name, email, password });
+      const token = signToken(profile);
+
+      return { token, profile };
+    },
+    login: async (parent, { email, password }) => {
+      const profile = await Profile.findOne({ email });
+
+      if (!profile) {
+        throw new AuthenticationError('No profile with this email found!');
+      }
+
+      const correctPw = await profile.isCorrectPassword(password);
+
+      if (!correctPw) {
+        throw new AuthenticationError('Incorrect password!');
+      }
+
+      const token = signToken(profile);
+      return { token, profile };
+    },
+    removeProfile: async (parent, { profileId }) => {
+      return Profile.findOneAndDelete({ _id: profileId });
+    },
+  },
 };
 
 module.exports = resolvers;
