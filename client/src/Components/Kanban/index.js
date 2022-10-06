@@ -1,12 +1,25 @@
 import './index.css'
 
 import { useParams } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 
 import KanbanTaskGroup from '../KanbanTaskGroup';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { QUERY_TASKS_IN_BOARD } from '../../utils/queries/queries';
+import { UPDATE_TASK_STATUS } from '../../utils/mutations/mutations'
 import { InfinitySpin } from 'react-loader-spinner';
+
+const moveKanbanTask = async (updateStatus, taskId, newStatus) => {
+  try {
+    
+    const data = await updateStatus({      
+      variables: { _id: taskId, status: newStatus }
+    });
+    
+  } catch (err) {
+    console.error(err);
+  }
+}
 
 const Kanban = () => {
 
@@ -16,26 +29,31 @@ const Kanban = () => {
     variables: { boardId: boardId },
   });
 
+  const [updateStatus, { error }] = useMutation(UPDATE_TASK_STATUS);
+
   const tasks = data?.tasks || [];
   console.log(tasks)
+  if (tasks.length === 0) {
+    return <></>
+  }
 
     // const { project, moveTask, isLoading } = useProjectContext();
     const kanbanBoards = ["To Do", "Doing", "Done"]
 
       const onDragEnd = result => {
-        const { destination, source } = result;
+        const { destination, source, draggableId } = result;
         if(!destination) {
           return;
         }
 
-        let sourceBoardId = source.droppableId;
-        let destinationBoardId = destination.droppableId;
+        let sourceStatus = source.droppableId;
+        let destinationStatus = destination.droppableId;
       
-        if(sourceBoardId === destinationBoardId && destination.index === source.index ) {
+        if(sourceStatus === destinationStatus) {
           return;
         }
 
-        // moveTask(sourceBoardId, destinationBoardId, source.index, destination.index);
+        moveKanbanTask(updateStatus, draggableId, destinationStatus);
       }
 
       

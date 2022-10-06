@@ -1,5 +1,4 @@
-import Task from '../Task';
-import AddTask from '../AddTask';
+import KanbanTask from '../KanbanTask';
 import './index.css';
 import { Droppable } from 'react-beautiful-dnd';
 
@@ -8,13 +7,13 @@ const KanbanTaskGroup = ({status, tasks, boardId}) => {
     return(
         <>
         <div className='task-group'>
-        <Droppable droppableId={boardId}>
+        <Droppable droppableId={status}>
             {(provided) => (
                 <div ref={provided.innerRef} 
                     {...provided.droppableProps}
                 >
                     {tasks.map((item, index) => (
-                        <Task task={item} key={item.id} index={index}/>
+                        <KanbanTask task={item} key={item._id} index={index}/>
                     ))}
                     {provided.placeholder}
                 </div>

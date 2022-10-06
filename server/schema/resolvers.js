@@ -61,6 +61,18 @@ const resolvers = {
     removeProfile: async (parent, { profileId }) => {
       return Profile.findOneAndDelete({ _id: profileId });
     },
+    updateTaskStatus: async (parent, { _id, status }) => {
+      return Task.findOneAndUpdate(
+        { _id: _id },
+        {
+          status: status
+        },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+    },
   },
 };
 
