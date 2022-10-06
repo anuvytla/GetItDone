@@ -17,7 +17,7 @@
 
 
 const { AuthenticationError } = require('apollo-server-express');
-const { Profile } = require('../models');
+const { Profile, Task } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -28,6 +28,10 @@ const resolvers = {
 
     profile: async (parent, { profileId }) => {
       return Profile.findOne({ _id: profileId });
+    },
+
+    tasks: async (parent, { boardId }) => {
+      return Task.find({ boardId: boardId });
     },
   },
 
@@ -56,6 +60,18 @@ const resolvers = {
     },
     removeProfile: async (parent, { profileId }) => {
       return Profile.findOneAndDelete({ _id: profileId });
+    },
+    updateTaskStatus: async (parent, { _id, status }) => {
+      return Task.findOneAndUpdate(
+        { _id: _id },
+        {
+          status: status
+        },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
     },
   },
 };

@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
 // Initialize new context for Project
 const ProjectContext = createContext();
@@ -7,6 +7,14 @@ export const useProjectContext = () => useContext(ProjectContext);
 
 // The provider is responsible for holding our state, updating the state, and persisting values to the children
 export const ProjectProvider = ({ children }) => {
+  const [isLoading, setLoading] = useState(true);
+  
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+  });
+
   const [project, setProject] = useState({
     id: "1",
     title: "Get It Done",
@@ -98,13 +106,18 @@ export const ProjectProvider = ({ children }) => {
   const moveTask = (fromBoardId, toBoardId, fromIndex, toIndex) => {
     let sourceBoard = project.taskBoards[fromBoardId];
     let destinationBoard = project.taskBoards[toBoardId];
-    
+
     let sourceBoardTasks = Array.from(sourceBoard.tasks);
     let [movedTask] = sourceBoardTasks.splice(fromIndex, 1);
 
-    let destinationBoardTasks = Array.from(destinationBoard.tasks);
-    destinationBoardTasks.splice(toIndex, 0, movedTask);
+    let destinationBoardTasks;
+    if(fromBoardId === toBoardId) {
+      destinationBoardTasks = Array.from(sourceBoardTasks);
+    } else {
+      destinationBoardTasks = Array.from(destinationBoard.tasks);
+    }
 
+    destinationBoardTasks.splice(toIndex, 0, movedTask);
     let updatedSourceBoard = {...sourceBoard, tasks: sourceBoardTasks};
     let updatedDestinationBoard = {...destinationBoard, tasks: destinationBoardTasks};
 
@@ -129,7 +142,7 @@ export const ProjectProvider = ({ children }) => {
   // The value prop expects an initial state object
   return (
     <ProjectContext.Provider
-      value={{ project, setProject, addTask, addTaskBoard, moveTask }}
+      value={{ project, isLoading, setProject, addTask, addTaskBoard, moveTask }}
     >
       {/* We render children in our component so that any descendent can access the value from the provider */}
       {children}
