@@ -1,7 +1,7 @@
 const { Schema, model } = require("mongoose");
 
 const taskSchema = new Schema({
-	_id: Schema.Types.ObjectId,
+	id: Schema.Types.ObjectId,
 	title: String,
 	description: String,
 	index: Number,
@@ -18,8 +18,8 @@ const taskSchema = new Schema({
 	status: {
 		type: String,
 		default: "To Do",
-		enum: ["To Do","Doing", "Done"]
-	}
+		enum: ["To Do", "Doing", "Done"],
+	},
 });
 
 const Task = model("Task", taskSchema);

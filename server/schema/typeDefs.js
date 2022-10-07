@@ -20,10 +20,8 @@ const typeDefs = gql`
 		description: String
 		index: Int
 		userId: String
-		profile: Profile
 		boardId: String
-		taskBoard: TaskBoard
-    status: String
+		status: String
 	}
 
 	type TaskBoard {
@@ -37,6 +35,7 @@ const typeDefs = gql`
 		profile(profileId: ID!): Profile
 		tasks: [Task]
 		taskBoards: [TaskBoard]
+		tasksById(boardId: String!): [Task]
 	}
 
 	type Mutation {
@@ -50,8 +49,8 @@ const typeDefs = gql`
 			userId: String
 			boardId: String!
 		): Task
+		updateTaskStatus(_id: ID!, status: String!): Task
 	}
-
 `;
 
 module.exports = typeDefs;
