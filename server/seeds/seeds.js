@@ -5,63 +5,65 @@ const db = require("../config/connection");
 
 const profiles = [
 	{
-		"name": "bob",
-		"email": "bob@email.com",
-		"password": "password1",
+		name: "bob",
+		email: "bob@email.com",
+		password: "password1",
 	},
 	{
-		"name": "steve",
-		"email": "steve@email.com",
-		"password": "password2",
+		name: "steve",
+		email: "steve@email.com",
+		password: "password2",
 	},
 	{
-		"name": "jane",
-		"email": "jane@email.com",
-		"password": "password3",
+		name: "jane",
+		email: "jane@email.com",
+		password: "password3",
 	},
 ];
 const tasks = [
 	{
 		title: "Create the express server",
 		description: "start the routes afterwards",
-		urgency: 1,
-		boardId: "aaaaaaaaaaaaaaaaaaaaaaaa",
+		index: 1,
+		board_id: 1,
 	},
 	{
 		title: "generate the react app",
 		description: "make sure it is set up in a separate 'client' folder",
-		urgency: 1,
-		boardId: "aaaaaaaaaaaaaaaaaaaaaaaa",
+		index: 1,
+		board_id: 1,
 	},
 	{
 		title: "CSS for the home page",
 		description: "style the nav bar",
-		urgency: 2,
-		boardId: "aaaaaaaaaaaaaaaaaaaaaaaa",
+		index: 2,
+		board_id: 1,
 	},
 	{
 		title: "server folder structure created",
 		description: "schema, connection, models, and seeds created",
-		urgency: 3,
-		boardId: "aaaaaaaaaaaaaaaaaaaaaaaa",
+		index: 3,
+		board_id: 1,
 	},
 	{
 		title: "get more lemons and limes",
 		description: "need by friday",
-		urgency: 1,
-		boardId: "bbbbbbbbbbbbbbbbbbbbbbbb",
+		index: 1,
+		board_id: 2,
 	},
+  
 	{
 		title: "create advertisements",
 		description: "poster, and signs to put around town",
-		urgency: 1,
-		boardId: "bbbbbbbbbbbbbbbbbbbbbbbb",
+		index: 1,
+		board_id: 2,
 	},
+  
 	{
 		title: "get a cooler to have ice and a pitcher",
 		description: "at least 64oz",
-		urgency: 2,
-		boardId: "bbbbbbbbbbbbbbbbbbbbbbbb",
+		index: 2,
+		board_id: 2,
 	},
 ];
 const taskBoard = [
@@ -83,8 +85,25 @@ db.once("open", async () => {
 	await TaskBoard.deleteMany({});
 
 	const insertProfiles = await Profile.insertMany(profiles);
-	const insertTasks = await Task.insertMany(tasks);
+	tasks[0].userId = insertProfiles[0]._id;
+	tasks[1].userId = insertProfiles[0]._id;
+	tasks[2].userId = insertProfiles[1]._id;
+	tasks[3].userId = insertProfiles[1]._id;
+	tasks[4].userId = insertProfiles[2]._id;
+	tasks[5].userId = insertProfiles[2]._id;
+	tasks[6].userId = insertProfiles[2]._id;
+
 	const insertTaskBoard = await TaskBoard.insertMany(taskBoard);
+
+	tasks[0].boardId = insertTaskBoard[0]._id;
+	tasks[1].boardId = insertTaskBoard[0]._id;
+	tasks[2].boardId = insertTaskBoard[0]._id;
+	tasks[3].boardId = insertTaskBoard[0]._id;
+	tasks[4].boardId = insertTaskBoard[1]._id;
+	tasks[5].boardId = insertTaskBoard[1]._id;
+	tasks[6].boardId = insertTaskBoard[1]._id;
+
+	const insertTasks = await Task.insertMany(tasks);
 	console.log("seed = success");
 	process.exit(0);
 });

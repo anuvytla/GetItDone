@@ -4,7 +4,7 @@ const taskSchema = new Schema({
 	_id: Schema.Types.ObjectId,
 	title: String,
 	description: String,
-	urgency: Number,
+	index: Number,
 	// probably add a user_id to this that refers to user id
 	userId: {
 		type: Schema.Types.ObjectId,
