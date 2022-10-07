@@ -1,7 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { UPDATE_TASK } from "../mutations/mutations";
+import { ADD_TASK, UPDATE_TASK, ADD_TASK_BOARD } from "../mutations/mutations";
 import { useMutation, useQuery } from '@apollo/client';
-import { ADD_TASK_BOARD } from "../mutations/mutations";
 import { FETCH_PROJECTS_QUERY } from '../../utils/queries/queries';
 
 // Initialize new context for Project
@@ -29,6 +28,9 @@ export const ProjectProvider = ({ children }) => {
 
 	const { loading, data } = useQuery(FETCH_PROJECTS_QUERY);
 	const [updateTask, { error }] = useMutation(UPDATE_TASK, {refetchQueries: [
+		{query: FETCH_PROJECTS_QUERY},
+	  ]});
+	const [addTaskMutation, {}] = useMutation(ADD_TASK, {refetchQueries: [
 		{query: FETCH_PROJECTS_QUERY},
 	  ]});
 	useEffect(() => {
@@ -66,7 +68,10 @@ function getTasks(projectId, boardId) {
   return [];
 }
 
-	const addTask = (task_info) => {
+	const addTask = async (task_info) => {
+		await addTaskMutation({      
+			variables: { ...task_info }
+		  });
 		// let taskBoardId = task_info.board_id.toString();
 		// let destinationBoard = project.taskBoards[taskBoardId];
 
