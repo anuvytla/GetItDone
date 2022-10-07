@@ -1,4 +1,4 @@
-const { Profile, Task, TaskBoard } = require("../models");
+const { Project,Profile, Task, TaskBoard } = require("../models");
 const { Schema, model } = require("mongoose");
 
 const db = require("../config/connection");
@@ -78,11 +78,24 @@ const taskBoard = [
 		description: "tracking all tasks for lemonade stand",
 	},
 ];
-
+const projects = [
+	{
+		title: "Get It Done",
+		description: "Awesome Project management tool"
+	},
+	{
+		title: "Dummy Project",
+		description: "Not So Awesome Project management tool"
+	}
+];
 db.once("open", async () => {
+	await Project.deleteMany({});
 	await Profile.deleteMany({});
 	await Task.deleteMany({});
 	await TaskBoard.deleteMany({});
+
+	const insertProjects = await Project.insertMany(projects);
+	console.log(insertProjects);
 
 	const insertProfiles = await Profile.insertMany(profiles);
 	tasks[0].userId = insertProfiles[0]._id;
@@ -93,6 +106,9 @@ db.once("open", async () => {
 	tasks[5].userId = insertProfiles[2]._id;
 	tasks[6].userId = insertProfiles[2]._id;
 
+
+	taskBoard[0].projectId = insertProjects[0]._id;
+	taskBoard[1].projectId = insertProjects[0]._id;
 	const insertTaskBoard = await TaskBoard.insertMany(taskBoard);
 
 	tasks[0].boardId = insertTaskBoard[0]._id;

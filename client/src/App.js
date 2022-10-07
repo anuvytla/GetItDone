@@ -19,6 +19,7 @@ import Home from "./Components/Home";
 import Footer from "./Components/Footer";
 import newTaskBoard from "./Components/newTaskBoard";
 import { ProjectProvider } from "./utils/context/ProjectContext";
+import ProjectView from "./Components/ProjectView";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -63,6 +64,7 @@ function App() {
 								<Route path="/donation" element={<Donation />} />
 								<Route path="/notifications" element={<Notifications />} />
 								<Route path="/newTaskBoard" element={<newTaskBoard />} />
+                <Route path="/project/:projectId" element={<ProjectView />} />
 							</Routes>
 						</div>
 						<Footer />
