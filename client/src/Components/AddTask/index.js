@@ -31,8 +31,7 @@ const AddTask = ({ boardId }) => {
 					let newTask = {
 						title: taskTitle,
 						description: taskDescription,
-						urgency: 2,
-						board_id: parseInt(boardId),
+						boardId: boardId,
 					};
 					addTask(newTask);
 					setTaskTitle("");

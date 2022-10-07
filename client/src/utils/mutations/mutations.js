@@ -24,7 +24,7 @@ export const ADD_TASK_BOARD = gql`
 export const ADD_TASK = gql`
 	mutation AddTask(
 		$title: String!
-		$boardId: String!
+		$boardId: ID!
 		$description: String
 		$userId: String
 	) {

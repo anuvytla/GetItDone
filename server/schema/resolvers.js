@@ -16,7 +16,7 @@
 // module.exports = resolvers;
 
 const { AuthenticationError } = require("apollo-server-express");
-const { Profile, Task, TaskBoard } = require("../models");
+const { Profile, Task, TaskBoard, Project } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -39,6 +39,21 @@ const resolvers = {
 		},
 		taskBoardsByProject: async (parents, { projectId }) => {
 			return TaskBoard.find({ projectId });
+		},
+		projects: async () => {
+			return Project.find();
+		},
+	},
+
+	TaskBoard: {
+		tasks: async (taskBoard) => {
+			return Task.find({ boardId: taskBoard._id });
+		},
+	},
+
+	Project: {
+		taskBoards: async (project) => {
+			return TaskBoard.find({ projectId: project._id });
 		},
 	},
 
