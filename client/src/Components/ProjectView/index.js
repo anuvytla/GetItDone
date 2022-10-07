@@ -8,6 +8,7 @@ import { DragDropContext } from 'react-beautiful-dnd';
 import { InfinitySpin } from 'react-loader-spinner';
 import { QUERY_TASKBOARDS_IN_PROJECT } from '../../utils/queries/queries';
 import TaskGroup from '../../Components/TaskGroup';
+import AddTaskBoard from '../../Components/AddTaskBoard';
 import { useProjectContext } from '../../utils/context/ProjectContext';
 
 function ProjectView({...props}) {
@@ -58,14 +59,16 @@ function ProjectView({...props}) {
         ) : (
             
             myBoards.length ? 
-            (          
+            (<>
             <DragDropContext onDragEnd={onDragEnd}>
                 {
                     myBoards.map(function(taskBoard) {
                         return <TaskGroup key={taskBoard._id.toString()} taskBoard={taskBoard} boardId={taskBoard._id.toString()} projectId={projectId}/>
                     })
                 }
-            </DragDropContext>) :
+            </DragDropContext>
+            <AddTaskBoard projectId={projectId}/>
+            </>) :
             (
                 <div></div>
             )

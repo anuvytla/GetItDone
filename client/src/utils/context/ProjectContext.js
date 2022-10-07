@@ -33,6 +33,10 @@ export const ProjectProvider = ({ children }) => {
 	const [addTaskMutation, {}] = useMutation(ADD_TASK, {refetchQueries: [
 		{query: FETCH_PROJECTS_QUERY},
 	  ]});
+	
+	const [addTaskBoardMutation, {}] = useMutation(ADD_TASK_BOARD, {refetchQueries: [
+		{query: FETCH_PROJECTS_QUERY},
+	  ]});
 	useEffect(() => {
 		if(data) {
 			setLoading(false);
@@ -68,6 +72,13 @@ function getTasks(projectId, boardId) {
   return [];
 }
 
+async function addTaskBoard (taskBoard) {
+	console.log(taskBoard);
+	await addTaskBoardMutation({
+		variables: { ...taskBoard }
+	});
+}
+
 	const addTask = async (task_info) => {
 		await addTaskMutation({      
 			variables: { ...task_info }
@@ -86,10 +97,6 @@ function getTasks(projectId, boardId) {
 		// let updatedProject = { ...project, taskBoards: updatedProjectBoards };
 
 		// setProject(updatedProject);
-	};
-
-	const addTaskBoard = (taskBoard) => {
-		ADD_TASK_BOARD(taskBoard);
 	};
 
 	const moveTask = async (projectId, fromBoardId, toBoardId, fromIndex, toIndex) => {
