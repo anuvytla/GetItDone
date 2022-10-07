@@ -1,12 +1,13 @@
+import "./index.css";
 import { useState } from "react";
 import { useProjectContext } from "../../utils/context/ProjectContext";
 
-const NewTaskBoard = ({ userId }) => {
+const AddTaskBoard = ({ projectId }) => {
 	const { addTaskBoard } = useProjectContext();
 	const [taskBoardTitle, setTaskBoardTitle] = useState("");
 	const [taskBoardDescription, setTaskBoardDescription] = useState("");
 	return (
-		<>
+		<div className="add-task-board-container">
 			<input
 				placeholder="Title"
 				id="taskBoardTitle"
@@ -14,7 +15,7 @@ const NewTaskBoard = ({ userId }) => {
 				onChange={(event) => setTaskBoardTitle(event.target.value)}
 			/>
 			<input
-				placeholder="Description (optional)"
+				placeholder="Description"
 				id="taskBoardDescription"
 				value={taskBoardDescription}
 				onChange={(event) => setTaskBoardDescription(event.target.value)}
@@ -23,14 +24,14 @@ const NewTaskBoard = ({ userId }) => {
 				className="addTaskBoard"
 				onClick={() => {
 					if (taskBoardTitle.trim().length === 0) {
-						alert("Must enter valid taskboard name!");
+						alert("Must enter valid task!");
 						return;
 					}
 
 					let newTaskBoard = {
 						title: taskBoardTitle,
 						description: taskBoardDescription,
-						userId: parseInt(userId),
+						projectId: projectId,
 					};
 					addTaskBoard(newTaskBoard);
 					setTaskBoardTitle("");
@@ -39,8 +40,8 @@ const NewTaskBoard = ({ userId }) => {
 			>
 				Add Task Board
 			</button>
-		</>
+		</div>
 	);
 };
 
-export default NewTaskBoard;
+export default AddTaskBoard;

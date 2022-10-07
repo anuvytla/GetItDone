@@ -2,7 +2,6 @@ const { Schema, model } = require("mongoose");
 const Tasks = require("./Tasks");
 
 const taskBoardSchema = new Schema({
-	id: Number,
 	title: String,
 	description: String,
 	projectId: {

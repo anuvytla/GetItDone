@@ -16,7 +16,7 @@
 // module.exports = resolvers;
 
 const { AuthenticationError } = require("apollo-server-express");
-const { Profile, Task, TaskBoard } = require("../models");
+const { Profile, Task, TaskBoard, Project } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -34,8 +34,26 @@ const resolvers = {
 		taskBoards: async () => {
 			return TaskBoard.find();
 		},
-		tasksById: async (parents, { boardId }) => {
-			return Task.find({ boardId });
+		tasksById: async (parent, { boardId }) => {
+			return Task.find({ boardId: boardId });
+		},
+		taskBoardsByProject: async (parents, { projectId }) => {
+			return TaskBoard.find({ projectId });
+		},
+		projects: async () => {
+			return Project.find();
+		},
+	},
+
+	TaskBoard: {
+		tasks: async (taskBoard) => {
+			return Task.find({ boardId: taskBoard._id });
+		},
+	},
+
+	Project: {
+		taskBoards: async (project) => {
+			return TaskBoard.find({ projectId: project._id });
 		},
 	},
 
@@ -65,8 +83,8 @@ const resolvers = {
 		removeProfile: async (parent, { profileId }) => {
 			return Profile.findOneAndDelete({ _id: profileId });
 		},
-		addTaskBoard: async (parent, { title, description }) => {
-			const newTaskBoard = await TaskBoard.create({ title, description });
+		addTaskBoard: async (parent, { title, description, projectId }) => {
+			const newTaskBoard = await TaskBoard.create({ title, description, projectId });
 			return newTaskBoard;
 		},
 		addTask: async (parent, { title, description, userId, boardId }) => {
@@ -83,6 +101,18 @@ const resolvers = {
 				{ _id: _id },
 				{
 					status: status,
+				},
+				{
+					new: true,
+					runValidators: true,
+				}
+			);
+		},
+		updateTask: async (parent, { _id, boardId }) => {
+			return Task.findOneAndUpdate(
+				{ _id: _id },
+				{
+					boardId: boardId,
 				},
 				{
 					new: true,
