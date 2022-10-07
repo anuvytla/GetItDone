@@ -49,14 +49,17 @@ function ProjectView({...props}) {
 
     return (
         <div>
+            
         {isLoading ? (
             <InfinitySpin 
                 width='200'
                 color="#4fa94d"
             />
         ) : (
+            
             myBoards.length ? 
-            (<DragDropContext onDragEnd={onDragEnd}>
+            (          
+            <DragDropContext onDragEnd={onDragEnd}>
                 {
                     myBoards.map(function(taskBoard) {
                         return <TaskGroup key={taskBoard._id.toString()} taskBoard={taskBoard} boardId={taskBoard._id.toString()} projectId={projectId}/>

@@ -18,20 +18,20 @@ const Header = () => {
 		Auth.logout();
 	};
 	return (
-		<header className="bg-main text-dark mb-4 py-2 display-flex align-center">
-			<div className="ml-5 display-flex align-center">
+		<header className="bg-main text-dark mb-5 pt-2">
+			<div className="ml-5 display-flex align-center justify-space-around">
 				<Link className="text-main" to="/">
 					<i className="fa-solid fa-2x fa-circle-check mx-3 "></i>
-					<h1 className="display-inline-block " style={{ fontSize: "2rem" }}>
+					<h1 className="display-inline-block " style={{ fontSize: "2rem", fontFamily: "Kalam, cursive" }}>
 						Get It Done
 					</h1>
 				</Link>
 
-				<div className="justify-flex-end">
+				<div className="display-flex justify-flex-end">
 					{Auth.loggedIn() ? (
 						<>
 							<NavLink exact="true" activeclassname="active" to="/dashboard">
-								<FontAwesomeIcon icon={faHouse} color="#4d4d4e" />
+								<FontAwesomeIcon icon={faHouse} color="#007f5f" size="2x" className="mx-2"/>
 							</NavLink>
 
 							<NavLink
@@ -40,7 +40,7 @@ const Header = () => {
 								className="about-link"
 								to="/about"
 							>
-								<FontAwesomeIcon icon={faCircleInfo} color="#4d4d4e" />
+								<FontAwesomeIcon icon={faCircleInfo} color="#007f5f" size="2x" className="mx-2"/>
 							</NavLink>
 
 							<NavLink
@@ -49,7 +49,7 @@ const Header = () => {
 								className="task-link"
 								to="/kanban/aaaaaaaaaaaaaaaaaaaaaaaa"
 							>
-								<FontAwesomeIcon icon={faSquareCheck} color="#4d4d4e" />
+								<FontAwesomeIcon icon={faSquareCheck} color="#007f5f" size="2x" className="mx-2"/>
 							</NavLink>
 
 							<NavLink
@@ -58,7 +58,7 @@ const Header = () => {
 								className="notification-link"
 								to="/notifications"
 							>
-								<FontAwesomeIcon icon={faBell} color="#4d4d4e" />
+								<FontAwesomeIcon icon={faBell} color="#007f5f" size="2x" className="mx-2"/>
 							</NavLink>
 
 							<NavLink
@@ -67,7 +67,7 @@ const Header = () => {
 								className="donation-link"
 								to="/donation"
 							>
-								<FontAwesomeIcon icon={faDollarSign} color="#4d4d4e" />
+								<FontAwesomeIcon icon={faDollarSign} color="#007f5f" size="2x" className="mx-2"/>
 							</NavLink>
 							<NavLink
 								exact="true"
@@ -75,20 +75,22 @@ const Header = () => {
 								className="about-link"
 								to="/newTaskBoard"
 							>
-								<FontAwesomeIcon icon={faPlusSquare} color="#4d4d4e" />
+								<FontAwesomeIcon icon={faPlusSquare} color="#007f5f" size="2x" className="mx-2"/>
 							</NavLink>
-							<button className="btn btn-lg btn-light m-2" onClick={logout}>
+							<button className="btn mb-2 ml-4 m-top" onClick={logout}>
 								Logout
 							</button>
 						</>
 					) : (
 						<>
-							<Link className="btn m-2" to="/login">
-								Login
-							</Link>
-							<Link className="btn m-2" to="/signup">
-								Signup
-							</Link>
+							<div className="topnav-right">
+								<Link className="btn m-2" to="/login">
+									Login
+								</Link>
+								<Link className="btn m-2" to="/signup">
+									Signup
+								</Link>
+							</div>	
 						</>
 					)}
 				</div>
