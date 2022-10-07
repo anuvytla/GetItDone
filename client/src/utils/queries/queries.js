@@ -18,6 +18,14 @@ export const QUERY_TASKBOARDS_IN_PROJECT = gql`
       _id
       title
       description
+      tasks {
+        _id
+        title
+        description
+        index
+        userId
+        boardId
+      }
     }
   }
   `;
@@ -30,4 +38,27 @@ export const FETCH_USERS_QUERY = gql`
 			email
 		}
 	}
+`;
+
+export const FETCH_PROJECTS_QUERY = gql`
+  query Query {
+    projects {
+      _id
+      title
+      description
+      taskBoards {
+        _id
+        title
+        description
+        tasks {
+          _id
+          title
+          description
+          index
+          userId
+          boardId
+        }
+      }
+    }
+  }
 `;

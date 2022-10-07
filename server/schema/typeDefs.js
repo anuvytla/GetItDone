@@ -28,12 +28,14 @@ const typeDefs = gql`
 		_id: ID
 		title: String
 		description: String
+		tasks: [Task]
 	}
 
 	type Project {
 		_id: ID
 		title: String
 		description: String
+		taskBoards: [TaskBoard]
 	}
 
 	type Query {
@@ -43,6 +45,7 @@ const typeDefs = gql`
 		taskBoards: [TaskBoard]
 		tasksById(boardId: ID!): [Task]
 		taskBoardsByProject(projectId: ID!): [TaskBoard]
+		projects: [Project]
 	}
 
 	type Mutation {

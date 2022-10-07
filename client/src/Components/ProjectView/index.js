@@ -10,11 +10,11 @@ import { QUERY_TASKBOARDS_IN_PROJECT } from '../../utils/queries/queries';
 import TaskGroup from '../../Components/TaskGroup';
 import { useProjectContext } from '../../utils/context/ProjectContext';
 
-
 function ProjectView({...props}) {
     const [myBoards, setMyBoards] = useState([]);
-    const {state, setTaskBoards, getTaskBoards, moveTask} = useProjectContext();
+    const {isLoading, state, moveTask} = useProjectContext();
     const { projectId } = useParams();
+
     const onDragEnd = result => {
         const { destination, source } = result;
         if(!destination) {
@@ -31,20 +31,8 @@ function ProjectView({...props}) {
         moveTask(projectId, sourceBoardId, destinationBoardId, source.index, destination.index);
     }
 
-    const { loading, data } = useQuery(QUERY_TASKBOARDS_IN_PROJECT, {
-        variables: { projectId: projectId },
-    });
-    useEffect(() => {
-        if (data) {
-            let boards = data.taskBoardsByProject;
-            setTaskBoards(projectId, boards);
-            console.log("update taskboards");
-        }
-      }, [data]);
-    
     useEffect(() => {
         let boards = taskBoardsInProject();
-        console.log("Updating my boards");
         if(boards) {
             setMyBoards(boards);
         }
@@ -52,7 +40,7 @@ function ProjectView({...props}) {
 
     function taskBoardsInProject () {
         let project = state.projects.find(element => element._id === projectId);
-        if(project) {
+        if(project && project.taskBoards) {
             return project.taskBoards;
         }
 
@@ -61,7 +49,7 @@ function ProjectView({...props}) {
 
     return (
         <div>
-        {loading ? (
+        {isLoading ? (
             <InfinitySpin 
                 width='200'
                 color="#4fa94d"

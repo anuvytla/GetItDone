@@ -10,42 +10,21 @@ import { useEffect, useState } from 'react';
 
 function TaskGroup({taskBoard, boardId, projectId}) {
 
-    let {setTasks, getTasks, state} = useProjectContext();
+    let {getTasks, state} = useProjectContext();
     let [myTasks, setMyTasks] = useState([]);
-
-    const { loading, data } = useQuery(QUERY_TASKS_IN_BOARD, {
-        variables: { boardId: boardId },
-      });
-
-
-      
-    useEffect(() => {
-            if (data) {
-            let tasks = data.tasksById;
-            setTasks(projectId, boardId, tasks);
-            console.log("update tasks");
-        }
-    }, [data]);
 
     useEffect(() => {
         let tasks = getTasks(projectId, boardId);
         console.log("Updating my tasks");
         if(tasks) {
+            console.log(tasks);
             setMyTasks(tasks);
         }
     }, [state]);
 
     return(
         <>
-        {loading ? (
-            <InfinitySpin 
-                width='50'
-                color="#4fa94d"
-            />
-        )
-         :
-        (
-            <div className='task-group'>
+        {<div className='task-group'>
             <h1>{taskBoard.title}</h1>
             {myTasks.length ? (<Droppable droppableId={boardId}>
                 {(provided) => (
@@ -61,7 +40,7 @@ function TaskGroup({taskBoard, boardId, projectId}) {
             </Droppable>) : (<div></div>)}
             <AddTask boardId={boardId}/>
             </div>
-        )}
+        }
         </>
     )
 }
