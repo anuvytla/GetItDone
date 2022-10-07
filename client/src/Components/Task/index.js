@@ -19,3 +19,6 @@ const Task = ({task, index}) => {
 }
 
 export default Task;
+
+
+
