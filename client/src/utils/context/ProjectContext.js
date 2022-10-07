@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
+import { ADD_TASK_BOARD } from "../mutations/mutations";
 
 // Initialize new context for Project
 const ProjectContext = createContext();
@@ -117,7 +118,7 @@ export const ProjectProvider = ({ children }) => {
 	};
 
 	const addTaskBoard = (taskBoard) => {
-		let userId = taskBoard.userId.toString();
+		ADD_TASK_BOARD(taskBoard);
 	};
 
 	const moveTask = (fromBoardId, toBoardId, fromIndex, toIndex) => {

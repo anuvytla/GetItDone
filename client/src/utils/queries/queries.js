@@ -10,3 +10,13 @@ export const QUERY_TASKS_IN_BOARD = gql`
 		}
 	}
 `;
+
+export const FETCH_USERS_QUERY = gql`
+	query Users {
+		users {
+			_id
+			username
+			email
+		}
+	}
+`;

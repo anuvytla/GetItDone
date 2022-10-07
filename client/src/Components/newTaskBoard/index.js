@@ -23,7 +23,7 @@ const NewTaskBoard = ({ userId }) => {
 				className="addTaskBoard"
 				onClick={() => {
 					if (taskBoardTitle.trim().length === 0) {
-						alert("Must enter valid task!");
+						alert("Must enter valid taskboard name!");
 						return;
 					}
 
