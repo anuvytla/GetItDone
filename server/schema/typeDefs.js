@@ -30,12 +30,19 @@ const typeDefs = gql`
 		description: String
 	}
 
+	type Project {
+		_id: ID
+		title: String
+		description: String
+	}
+
 	type Query {
 		profiles: [Profile]!
 		profile(profileId: ID!): Profile
 		tasks: [Task]
 		taskBoards: [TaskBoard]
 		tasksById(boardId: ID!): [Task]
+		taskBoardsByProject(projectId: ID!): [TaskBoard]
 	}
 
 	type Mutation {
@@ -50,6 +57,7 @@ const typeDefs = gql`
 			boardId: ID!
 		): Task
 		updateTaskStatus(_id: ID!, status: String!): Task
+		updateTask(_id: ID!, boardId: ID!): Task
 	}
 `;
 

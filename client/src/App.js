@@ -20,6 +20,7 @@ import Footer from "./Components/Footer";
 import Kanban from "./Components/Kanban";
 import NewTaskBoard from "./Components/newTaskBoard";
 import { ProjectProvider } from "./utils/context/ProjectContext";
+import ProjectView from "./Components/ProjectView";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -65,6 +66,7 @@ function App() {
                 <Route path="/notifications" element={<Notifications />} />
                 <Route path="/newTaskBoard" element={<NewTaskBoard />} />
                 <Route path="/kanban/:boardId" element={<Kanban />} />
+                <Route path="/project/:projectId" element={<ProjectView />} />
               </Routes>
             </div>
             <Footer />
