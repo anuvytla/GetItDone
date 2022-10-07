@@ -10,7 +10,7 @@
   - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
-  - [What we learned](#what-we-learned)
+  - [Dependencies](#dependencies)
   - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 - [Authors](#authors)
@@ -48,7 +48,8 @@ Has a polished UI and is mobile friendly
 
 ### Screenshot
 
-![](./public/assets/images/ScreenshotA.png)
+![](./client/public/screenshot_a.png)
+![](./client/public/screenshot_b.png)
 
 
 
@@ -74,11 +75,8 @@ Has a polished UI and is mobile friendly
 - bcrypt
 - dotenv
 - Express.js
-- 
 - JWT authentication
-- 
 - MongoDB
-- passport
 - mongoose
 
 
