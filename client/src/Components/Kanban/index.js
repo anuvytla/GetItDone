@@ -24,14 +24,14 @@ const moveKanbanTask = async (updateStatus, taskId, newStatus) => {
 const Kanban = () => {
 
   const { boardId } = useParams();
-
+  console.log(boardId);
   const { isLoading, data } = useQuery(QUERY_TASKS_IN_BOARD, {
     variables: { boardId: boardId },
   });
 
   const [updateStatus, { error }] = useMutation(UPDATE_TASK_STATUS);
 
-  const tasks = data?.tasks || [];
+  const tasks = data?.tasksById || [];
   console.log(tasks)
   if (tasks.length === 0) {
     return <></>

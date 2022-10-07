@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { UPDATE_TASK } from "../mutations/mutations";
 import { useMutation } from '@apollo/client';
+import { ADD_TASK_BOARD } from "../mutations/mutations";
 
 // Initialize new context for Project
 const ProjectContext = createContext();
@@ -125,7 +126,7 @@ function getTasks(projectId, boardId) {
 	};
 
 	const addTaskBoard = (taskBoard) => {
-		// let userId = taskBoard.userId.toString();
+		ADD_TASK_BOARD(taskBoard);
 	};
 
 	const moveTask = async (projectId, fromBoardId, toBoardId, fromIndex, toIndex) => {

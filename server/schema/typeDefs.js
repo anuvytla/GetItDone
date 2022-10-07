@@ -20,7 +20,7 @@ const typeDefs = gql`
 		description: String
 		index: Int
 		userId: String
-		boardId: String
+		boardId: ID
 		status: String
 	}
 
@@ -41,7 +41,7 @@ const typeDefs = gql`
 		profile(profileId: ID!): Profile
 		tasks: [Task]
 		taskBoards: [TaskBoard]
-		tasksById(boardId: String!): [Task]
+		tasksById(boardId: ID!): [Task]
 		taskBoardsByProject(projectId: ID!): [TaskBoard]
 	}
 
@@ -54,7 +54,7 @@ const typeDefs = gql`
 			title: String!
 			description: String
 			userId: String
-			boardId: String!
+			boardId: ID!
 		): Task
 		updateTaskStatus(_id: ID!, status: String!): Task
 		updateTask(_id: ID!, boardId: ID!): Task

@@ -47,7 +47,7 @@ const Header = () => {
 								exact="true"
 								activeclassname="active"
 								className="task-link"
-								to="/"
+								to="/kanban/aaaaaaaaaaaaaaaaaaaaaaaa"
 							>
 								<FontAwesomeIcon icon={faSquareCheck} color="#4d4d4e" />
 							</NavLink>
