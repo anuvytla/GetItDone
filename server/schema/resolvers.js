@@ -34,8 +34,8 @@ const resolvers = {
 		taskBoards: async () => {
 			return TaskBoard.find();
 		},
-		tasksById: async (parents, { boardId }) => {
-			return Task.find({ boardId });
+		tasksById: async (parent, { boardId }) => {
+			return Task.find({ boardId: boardId });
 		},
 	},
 
