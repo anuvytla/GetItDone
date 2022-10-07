@@ -17,7 +17,7 @@ import Donation from "./Components/Donation";
 import Notifications from "./Components/Notifications";
 import Home from "./Components/Home";
 import Footer from "./Components/Footer";
-import newTaskBoard from "./Components/newTaskBoard";
+import NewTaskBoard from "./Components/newTaskBoard";
 import { ProjectProvider } from "./utils/context/ProjectContext";
 
 // Construct our main GraphQL API endpoint
@@ -62,7 +62,7 @@ function App() {
 								<Route path="/signup" element={<Signup />} />
 								<Route path="/donation" element={<Donation />} />
 								<Route path="/notifications" element={<Notifications />} />
-								<Route path="/newTaskBoard" element={<newTaskBoard />} />
+								<Route path="/newTaskBoard" element={<NewTaskBoard />} />
 							</Routes>
 						</div>
 						<Footer />

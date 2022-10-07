@@ -23,13 +23,14 @@ const typeDefs = gql`
 		profile: Profile
 		boardId: String
 		taskBoard: TaskBoard
-    status: String
+		status: String
 	}
 
 	type TaskBoard {
 		_id: ID
 		title: String
 		description: String
+		tasks: Task
 	}
 
 	type Query {
@@ -50,8 +51,8 @@ const typeDefs = gql`
 			userId: String
 			boardId: String!
 		): Task
+		updateTaskStatus(_id: String!, status: String!): Task
 	}
-
 `;
 
 module.exports = typeDefs;

@@ -18,8 +18,8 @@ const taskSchema = new Schema({
 	status: {
 		type: String,
 		default: "To Do",
-		enum: ["To Do","Doing", "Done"]
-	}
+		enum: ["To Do", "Doing", "Done"],
+	},
 });
 
 const Task = model("Task", taskSchema);
