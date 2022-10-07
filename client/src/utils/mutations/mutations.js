@@ -11,14 +11,13 @@ export const UPDATE_TASK_STATUS = gql`
 `;
 
 export const ADD_TASK_BOARD = gql`
-	mutation Mutation($title: String!, $description: String) {
-		addTaskBoard(title: $title, description: $description) {
-			_id
-			title
-			description
-			tasks
+	mutation AddTaskBoard($title: String!, $projectId: ID!, $description: String) {
+		addTaskBoard(title: $title, projectId: $projectId, description: $description) {
+	  	_id
+	  	title
+	  	description
 		}
-	}
+  	}
 `;
 
 export const ADD_TASK = gql`
