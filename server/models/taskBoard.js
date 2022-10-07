@@ -1,4 +1,5 @@
 const { Schema, model } = require("mongoose");
+const Tasks = require("./Tasks");
 
 const taskBoardSchema = new Schema({
 	id: Number,
@@ -7,6 +8,10 @@ const taskBoardSchema = new Schema({
 	projectId: {
 		type: Schema.Types.ObjectId,
 		ref: "Project",
+	},
+	tasks: {
+		type: Schema.Types.ObjectId,
+		ref: "Task",
 	},
 });
 
