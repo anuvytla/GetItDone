@@ -23,6 +23,7 @@ const typeDefs = gql`
 		profile: Profile
 		boardId: String
 		taskBoard: TaskBoard
+    status: String
 	}
 
 	type TaskBoard {
@@ -50,6 +51,7 @@ const typeDefs = gql`
 			boardId: String!
 		): Task
 	}
+
 `;
 
 module.exports = typeDefs;

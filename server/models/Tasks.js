@@ -1,7 +1,7 @@
 const { Schema, model } = require("mongoose");
 
 const taskSchema = new Schema({
-	id: Number,
+	_id: Schema.Types.ObjectId,
 	title: String,
 	description: String,
 	index: Number,
@@ -15,6 +15,13 @@ const taskSchema = new Schema({
 		type: Schema.Types.ObjectId,
 		ref: "TaskBoard",
 	},
+	status: {
+		type: String,
+		default: "To Do",
+		enum: ["To Do","Doing", "Done"]
+	}
 });
 
-module.exports = model("Task", taskSchema);
+const Task = model("Task", taskSchema);
+
+module.exports = Task;

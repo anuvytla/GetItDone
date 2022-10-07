@@ -2,10 +2,13 @@ const express = require("express");
 const { ApolloServer } = require("apollo-server-express");
 const path = require('path');
 const { authMiddleware } = require('./utils/auth');
+require('dotenv').config();
 
 const { typeDefs, resolvers } = require("./schema");
 const db = require("./config/connection");
 const mongoose = require("mongoose");
+const stripe = require("stripe")(process.env.STRIPE_SECRET);
+
 
 mongoose.set("debug", true);
 const PORT = process.env.PORT || 3001;
@@ -26,6 +29,16 @@ if (process.env.NODE_ENV === 'production') {
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
+
+app.post('/payment-intent', async (req, res) => {
+  const paymentIntent = await stripe.paymentIntents.create({
+    amount: parseInt(req.body.amount), 
+    currency: "usd"
+  });
+  res.send({
+    clientSecret: paymentIntent.client_secret
+  });
 });
 
 const startApolloServer = async (typeDefs, resolvers) => {
