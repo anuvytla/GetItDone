@@ -20,9 +20,7 @@ const typeDefs = gql`
 		description: String
 		index: Int
 		userId: String
-		profile: Profile
 		boardId: String
-		taskBoard: TaskBoard
 		status: String
 	}
 
@@ -30,7 +28,6 @@ const typeDefs = gql`
 		_id: ID
 		title: String
 		description: String
-		tasks: Task
 	}
 
 	type Query {
@@ -38,6 +35,7 @@ const typeDefs = gql`
 		profile(profileId: ID!): Profile
 		tasks: [Task]
 		taskBoards: [TaskBoard]
+		tasksById(boardId: String!): [Task]
 	}
 
 	type Mutation {
@@ -51,7 +49,7 @@ const typeDefs = gql`
 			userId: String
 			boardId: String!
 		): Task
-		updateTaskStatus(_id: String!, status: String!): Task
+		updateTaskStatus(_id: ID!, status: String!): Task
 	}
 `;
 

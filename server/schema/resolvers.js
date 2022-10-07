@@ -15,7 +15,6 @@
 
 // module.exports = resolvers;
 
-
 const { AuthenticationError } = require("apollo-server-express");
 const { Profile, Task, TaskBoard } = require("../models");
 const { signToken } = require("../utils/auth");
@@ -34,6 +33,9 @@ const resolvers = {
 		},
 		taskBoards: async () => {
 			return TaskBoard.find();
+		},
+		tasksById: async (parents, { boardId }) => {
+			return Task.find({ boardId });
 		},
 	},
 
@@ -76,18 +78,18 @@ const resolvers = {
 			});
 			return newTask;
 		},
-    updateTaskStatus: async (parent, { _id, status }) => {
-      return Task.findOneAndUpdate(
-        { _id: _id },
-        {
-          status: status
-        },
-        {
-          new: true,
-          runValidators: true,
-        }
-      );
-    },
+		updateTaskStatus: async (parent, { _id, status }) => {
+			return Task.findOneAndUpdate(
+				{ _id: _id },
+				{
+					status: status,
+				},
+				{
+					new: true,
+					runValidators: true,
+				}
+			);
+		},
 	},
 };
 
