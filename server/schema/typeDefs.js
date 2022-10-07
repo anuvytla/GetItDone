@@ -42,6 +42,13 @@ const typeDefs = gql`
 		addProfile(name: String!, email: String!, password: String!): Auth
 		login(email: String!, password: String!): Auth
 		removeProfile(profileId: ID!): Profile
+		addTaskBoard(title: String!, description: String): TaskBoard
+		addTask(
+			title: String!
+			description: String
+			userId: String
+			boardId: String!
+		): Task
 	}
 `;
 

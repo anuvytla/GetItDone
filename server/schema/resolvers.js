@@ -62,6 +62,19 @@ const resolvers = {
 		removeProfile: async (parent, { profileId }) => {
 			return Profile.findOneAndDelete({ _id: profileId });
 		},
+		addTaskBoard: async (parent, { title, description }) => {
+			const newTaskBoard = await TaskBoard.create({ title, description });
+			return newTaskBoard;
+		},
+		addTask: async (parent, { title, description, userId, boardId }) => {
+			const newTask = await Task.create({
+				title,
+				description,
+				userId,
+				boardId,
+			});
+			return newTask;
+		},
 	},
 };
 
