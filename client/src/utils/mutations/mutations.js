@@ -9,3 +9,12 @@ export const UPDATE_TASK_STATUS = gql`
     }
   }
 `;
+
+export const UPDATE_TASK = gql`
+  mutation updateTask($_id: ID!, $boardId: ID!) {
+    updateTask(_id: $_id, boardId: $boardId) {
+      _id
+      boardId
+    }
+  }
+`;

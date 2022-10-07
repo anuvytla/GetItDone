@@ -37,6 +37,9 @@ const resolvers = {
 		tasksById: async (parents, { boardId }) => {
 			return Task.find({ boardId });
 		},
+		taskBoardsByProject: async (parents, { projectId }) => {
+			return TaskBoard.find({ projectId });
+		},
 	},
 
 	Mutation: {
@@ -83,6 +86,18 @@ const resolvers = {
 				{ _id: _id },
 				{
 					status: status,
+				},
+				{
+					new: true,
+					runValidators: true,
+				}
+			);
+		},
+		updateTask: async (parent, { _id, boardId }) => {
+			return Task.findOneAndUpdate(
+				{ _id: _id },
+				{
+					boardId: boardId,
 				},
 				{
 					new: true,

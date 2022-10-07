@@ -1,12 +1,12 @@
 import './index.css'
-import TaskGroup from '../../Components/TaskGroup';
+import ProjectCard from '../../Components/ProjectCard';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { useProjectContext } from '../../utils/context/ProjectContext';
 import { InfinitySpin } from 'react-loader-spinner';
 
 const Dashboard = () => {
 
-    const { project, moveTask, isLoading } = useProjectContext();
+    const { state, moveTask, isLoading } = useProjectContext();
 
       const onDragEnd = result => {
         const { destination, source } = result;
@@ -33,13 +33,9 @@ const Dashboard = () => {
                 color="#4fa94d"
             />
         ) : (
-            <DragDropContext onDragEnd={onDragEnd}>
-                {
-                    Object.keys(project.taskBoards).map(function(taskBoardId) {
-                        return <TaskGroup key={taskBoardId} taskBoard={project.taskBoards[taskBoardId]} boardId={taskBoardId}/>
-                    })
-                }
-            </DragDropContext>
+            state.projects.map(function(project) {
+                return <ProjectCard key={project._id} project={project}/>
+            })
         )}
         </>
     )
