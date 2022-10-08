@@ -68,8 +68,8 @@ const DonationForm = () => {
     //  Donate UI.
     return (
       <form id="donation-form" onSubmit={handleSubmit}>
-        <input type='number' step='1' placeholder='2' id='donation-amount' value={donationAmount} 
-                onChange={event => setDonationAmount(parseInt(event.target.value))}
+        <input type='number' min='0.50' step='0.01' placeholder='2.00' id='donation-amount' value={donationAmount} 
+                onChange={event => setDonationAmount(event.target.value)}
           />
         <CardElement 
           id="card-element"

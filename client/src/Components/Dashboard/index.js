@@ -1,8 +1,8 @@
 import './index.css'
 import ProjectCard from '../../Components/ProjectCard';
-import { DragDropContext } from 'react-beautiful-dnd';
 import { useProjectContext } from '../../utils/context/ProjectContext';
 import { InfinitySpin } from 'react-loader-spinner';
+import AddProject from '../AddProject';
 
 const Dashboard = () => {
 
@@ -34,11 +34,14 @@ const Dashboard = () => {
                 color="#4fa94d"
             />
         ) : (         
-            
-            state.projects.map(function(project) {
-                return <ProjectCard key={project._id} project={project}/>
-            })
-          
+            <>
+            {
+              state.projects.map(function(project) {
+                  return <ProjectCard key={project._id} project={project}/>
+              })
+            }
+            <AddProject/>
+            </>
         )}
         </>
     )
