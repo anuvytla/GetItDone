@@ -92,7 +92,8 @@ Has a polished UI and is mobile friendly
 
 
 ### Continued development
-
+Include a notification Center to provide updates on various task
+Functionality to assign task to specific users
 
 
 
@@ -113,5 +114,6 @@ Has a polished UI and is mobile friendly
 
 
 ## Acknowledgments
+This project includes many technologies not covered in our course. Technologies like normalize.css, React Draggable, Tippy were implemented due to dedication of our team members. We would like to acknowledge each other, our instructional staff, and of course, the many develpers whose works are available open source to help us build our imaginations.  
 
   
