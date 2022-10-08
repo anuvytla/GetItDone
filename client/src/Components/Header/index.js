@@ -35,7 +35,7 @@ const Header = () => {
 							<NavLink exact="true" activeclassname="active" to="/dashboard">
 								<FontAwesomeIcon
 									icon={faHouse}
-									color="#007f5f"
+									color="#fff"
 									size="2x"
 									className="mx-2"
 								/>
@@ -49,7 +49,7 @@ const Header = () => {
 							>
 								<FontAwesomeIcon
 									icon={faCircleInfo}
-									color="#007f5f"
+									color="#fff"
 									size="2x"
 									className="mx-2"
 								/>
@@ -63,7 +63,7 @@ const Header = () => {
 							>
 								<FontAwesomeIcon
 									icon={faDollarSign}
-									color="#007f5f"
+									color="#fff"
 									size="2x"
 									className="mx-2"
 								/>

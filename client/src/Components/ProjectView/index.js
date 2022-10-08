@@ -49,7 +49,7 @@ function ProjectView({...props}) {
     }
 
     return (
-        <div>
+        <div >
             
         {isLoading ? (
             <InfinitySpin 
@@ -60,6 +60,7 @@ function ProjectView({...props}) {
             
             myBoards.length ? 
             (<>
+            <div className='project'>
             <DragDropContext onDragEnd={onDragEnd}>
                 {
                     myBoards.map(function(taskBoard) {
@@ -67,6 +68,7 @@ function ProjectView({...props}) {
                     })
                 }
             </DragDropContext>
+            </div>
             <AddTaskBoard projectId={projectId}/>
             </>) :
             (

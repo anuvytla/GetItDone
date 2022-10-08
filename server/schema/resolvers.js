@@ -43,6 +43,9 @@ const resolvers = {
 		projects: async () => {
 			return Project.find();
 		},
+		taskStatus: async (parent, { taskId }) => {
+			return Task.findOne({ _id: taskId });
+		},
 	},
 
 	TaskBoard: {

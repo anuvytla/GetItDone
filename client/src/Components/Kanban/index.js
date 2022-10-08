@@ -1,8 +1,6 @@
 import './index.css'
-
 import { useParams } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
-
 import KanbanTaskGroup from '../KanbanTaskGroup';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { QUERY_TASKS_IN_BOARD } from '../../utils/queries/queries';
@@ -59,12 +57,16 @@ const Kanban = () => {
       
     return (
         <>
+        <h1 className='text-center'>Kanban view</h1>
+        <div className='kanban'>
+                    
         {isLoading ? (
             <InfinitySpin 
                 width='200'
                 color="#4fa94d"
             />
         ) : (
+            
             <DragDropContext onDragEnd={onDragEnd}>
                 {
                     kanbanBoards.map(function(status) {
@@ -73,6 +75,7 @@ const Kanban = () => {
                 }
             </DragDropContext>
         )}
+        </div>
         </>
     )
 }

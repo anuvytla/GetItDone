@@ -26,8 +26,10 @@ function TaskGroup({ taskBoard, boardId, projectId }) {
     <>
       {
         <div className="task-group">
-          <Link to={`/kanban/${boardId}`}>
-            <h1>{taskBoard.title}</h1>
+          <Link  onClick={() => {window.location.href=`/kanban/${boardId}`}}>
+            <h3>{taskBoard.title}</h3>
+            <p style={{ opacity: "50%" }}>(Click above to open kanban view)</p>
+          </Link>
             {myTasks.length ? (
               <Droppable droppableId={boardId}>
                 {(provided) => (
@@ -43,7 +45,7 @@ function TaskGroup({ taskBoard, boardId, projectId }) {
               <div></div>
             )}
             <AddTask boardId={boardId} />
-          </Link>
+          
         </div>
       }
     </>
