@@ -67,11 +67,13 @@ const DonationForm = () => {
 
     //  Donate UI.
     return (
+      <>
+      <h1 className="text-center">Donate and help us grow</h1>
       <form id="donation-form" onSubmit={handleSubmit}>
-        <input type='number' min='0.50' step='0.01' placeholder='2.00' id='donation-amount' value={donationAmount} 
+        <input type='number' className='my-3' min='1.00' step='1.00' placeholder='$ Amount' id='donation-amount' value={donationAmount} 
                 onChange={event => setDonationAmount(event.target.value)}
           />
-        <CardElement 
+        <CardElement className='mb-3'
           id="card-element"
           options={{}} 
           onChange={handleChange}
@@ -88,6 +90,7 @@ const DonationForm = () => {
         {/* Show a success message upon completion */}
         <p className={succeeded ? "result-message" : "result-message hidden"}>Thank you for the donation!</p>
       </form>
+      </>
     );
 }
 

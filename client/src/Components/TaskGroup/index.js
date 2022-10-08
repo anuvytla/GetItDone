@@ -24,12 +24,14 @@ function TaskGroup({ taskBoard, boardId, projectId }) {
 
   return (
     <>
-      {
-        <div className="task-group">
+      
+        
+        <div className="task-group mt-3">
           <Link  onClick={() => {window.location.href=`/kanban/${boardId}`}}>
             <h3>{taskBoard.title}</h3>
             <p style={{ opacity: "50%" }}>(Click above to open kanban view)</p>
           </Link>
+          
             {myTasks.length ? (
               <Droppable droppableId={boardId}>
                 {(provided) => (
@@ -44,10 +46,10 @@ function TaskGroup({ taskBoard, boardId, projectId }) {
             ) : (
               <div></div>
             )}
-            <AddTask boardId={boardId} />
+          <AddTask boardId={boardId} /> 
           
         </div>
-      }
+      
     </>
   );
 }

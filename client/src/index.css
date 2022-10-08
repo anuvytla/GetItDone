@@ -1167,7 +1167,7 @@ form .form-input {
   margin: 0.625rem 0;
   font-size: 1.2rem;
   border: 1px solid #484848;
-  border-radius: 0.3rem;
+  border-radius: 10px;
 }
 
 form .form-input.form-input-squared {
@@ -1768,3 +1768,27 @@ a:hover{
   color: #fff;
   text-align: center;
 }
+
+.btn-add {
+  text-align: center;
+  display: inline-block;
+  padding: 0.5rem 1.2rem;
+  margin: 0;
+  text-decoration: none;
+  font-size: 1rem;
+  border-radius: 0.3rem;
+  border: 1px solid transparent;
+  outline: none;
+  color: #fff;
+  background-color: #480ca8;
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.btn-add:hover {
+  opacity: 0.8;
+}
+
+.project-card {
+  border-left: 5px solid #480ca8;  
+}
+

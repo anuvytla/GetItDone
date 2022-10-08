@@ -18,7 +18,7 @@ const Header = () => {
 		Auth.logout();
 	};
 	return (
-		<header className="bg-main text-dark mb-5 pt-2">
+		<header className="bg-main text-dark mb-5 pt-2 logo">
 			<div className="ml-5 display-flex align-center justify-space-around">
 				<Link className="text-main" to="/">
 					<i className="fa-solid fa-2x fa-circle-check mx-3 "></i>
