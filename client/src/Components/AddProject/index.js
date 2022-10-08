@@ -7,21 +7,21 @@ const AddProject = () => {
 	const [projectTitle, setProjectTitle] = useState("");
 	const [projectDescription, setProjectDescription] = useState("");
 	return (
-		<div className="add-project-container">
-			<input
+		<div className="add-project-container text-center">
+			<input className="form .form-input mx-3"
 				placeholder="Title"
 				id="projectTitle"
 				value={projectTitle}
 				onChange={(event) => setProjectTitle(event.target.value)}
 			/>
-			<input
+			<input className="form .form-input mx-3"
 				placeholder="Description"
 				id="projectDescription"
 				value={projectDescription}
 				onChange={(event) => setProjectDescription(event.target.value)}
 			/>
 			<button
-				className="addProject"
+				className="btn btn-add ml-5 addProject"
 				onClick={() => {
 					if (projectTitle.trim().length === 0) {
 						alert("Must enter valid title for project!");

@@ -60,7 +60,10 @@ function ProjectView({...props}) {
             
             myBoards.length ? 
             (<>
-            <div className='project'>
+            <h1 className='text-center'>Project Overview</h1>
+            <AddTaskBoard projectId={projectId}/>
+            <hr />
+            <div className='project display-flex flex-wrap'>
             <DragDropContext onDragEnd={onDragEnd}>
                 {
                     myBoards.map(function(taskBoard) {
@@ -69,7 +72,7 @@ function ProjectView({...props}) {
                 }
             </DragDropContext>
             </div>
-            <AddTaskBoard projectId={projectId}/>
+            
             </>) :
             (
                 <AddTaskBoard projectId={projectId}/>

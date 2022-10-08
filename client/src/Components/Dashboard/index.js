@@ -27,7 +27,7 @@ const Dashboard = () => {
       
     return (
         <>
-        <h1>Current Projects</h1>
+        <h1 className='text-center'>Current Projects</h1>
         {isLoading ? (
             <InfinitySpin 
                 width='200'
@@ -40,6 +40,7 @@ const Dashboard = () => {
                   return <ProjectCard key={project._id} project={project}/>
               })
             }
+            <hr />
             <AddProject/>
             </>
         )}

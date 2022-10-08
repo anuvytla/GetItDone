@@ -7,21 +7,21 @@ const AddTask = ({ boardId }) => {
 	const [taskTitle, setTaskTitle] = useState("");
 	const [taskDescription, setTaskDescription] = useState("");
 	return (
-		<div className="add-task-container">
-			<input
+		<div className="add-task-container text-center">
+			<input className="form .form-input mt-4"
 				placeholder="Title"
 				id="taskTitle"
 				value={taskTitle}
 				onChange={(event) => setTaskTitle(event.target.value)}
 			/>
-			<input
+			<input className="form .form-input"
 				placeholder="Description"
 				id="taskDescription"
 				value={taskDescription}
 				onChange={(event) => setTaskDescription(event.target.value)}
 			/>
 			<button
-				className="addTask"
+				className="btn-add mt-2 mx-auto addTask"
 				onClick={() => {
 					if (taskTitle.trim().length === 0) {
 						alert("Must enter valid task!");
