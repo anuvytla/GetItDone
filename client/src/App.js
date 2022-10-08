@@ -61,9 +61,9 @@ function App() {
                 />
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/home" element={<Home />} />
                 <Route path="/signup" element={<Signup />} />
-                <Route path="/donation" element={<Donation />} />
-                <Route path="/notifications" element={<Notifications />} />
+                <Route path="/donation" element={<Donation />} />                
                 <Route path="/newTaskBoard" element={<NewTaskBoard />} />
                 <Route path="/kanban/:boardId" element={<Kanban />} />
                 <Route path="/project/:projectId" element={<ProjectView />} />
