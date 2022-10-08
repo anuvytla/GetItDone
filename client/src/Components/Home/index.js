@@ -6,7 +6,7 @@ const Home = () => {
 	return (
 		<div>
 			<h1 className="text-center">Get It Done with us!</h1>
-			<div className="card mb-3 flex-row card-no-border">
+			<div className="card mb-3 flex-row home-card">
 				<div className="row g-0">
 					<div className="col-md-8">
 						<img
@@ -33,7 +33,7 @@ const Home = () => {
 			<br />
 			<br />
 
-			<div className="card mb-3 flex-row card-no-border">
+			<div className="card mb-3 flex-row home-card">
 				<div className="row g-0">
 					<div className="col-md-4 display-flex align-center">
 						<div className="card-body">

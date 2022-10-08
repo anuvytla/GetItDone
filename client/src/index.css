@@ -1724,8 +1724,9 @@ label form [type='radio'] {
   }
 }
 
-.card-no-border {
+.home-card {
   border-style: none !important;
+  background-color: #fff !important;
 }
 
 .bg-main {

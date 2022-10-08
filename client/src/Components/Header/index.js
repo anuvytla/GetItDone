@@ -1,4 +1,5 @@
 import React from "react";
+import Tippy from '@tippyjs/react';
 import { Link, NavLink } from "react-router-dom";
 import {
 	faHouse,
@@ -32,42 +33,50 @@ const Header = () => {
 				<div className="display-flex justify-flex-end">
 					{Auth.loggedIn() ? (
 						<>
-							<NavLink exact="true" activeclassname="active" to="/dashboard">
-								<FontAwesomeIcon
-									icon={faHouse}
-									color="#fff"
-									size="2x"
-									className="mx-2"
-								/>
-							</NavLink>
+							<Tippy content="Home">
+								<NavLink exact="true" activeclassname="active" to="/dashboard">
+									<FontAwesomeIcon
+										icon={faHouse}
+										color="#fff"
+										size="2x"
+										className="mx-2"
+									/>
+								</NavLink>
+							</Tippy>
 
-							<NavLink
-								exact="true"
-								activeclassname="active"
-								className="about-link"
-								to="/home"
-							>
-								<FontAwesomeIcon
-									icon={faCircleInfo}
-									color="#fff"
-									size="2x"
-									className="mx-2"
-								/>
-							</NavLink>
+							<Tippy content="About">
+								<NavLink
+									exact="true"
+									activeclassname="active"
+									className="about-link"
+									to="/home"
+								>
+									<FontAwesomeIcon
+										icon={faCircleInfo}
+										color="#fff"
+										size="2x"
+										className="mx-2"
+									/>
+								</NavLink>
+							</Tippy>
+						
 
-							<NavLink
-								exact="true"
-								activeclassname="active"
-								className="donation-link"
-								to="/donation"
-							>
-								<FontAwesomeIcon
-									icon={faDollarSign}
-									color="#fff"
-									size="2x"
-									className="mx-2"
-								/>
-							</NavLink>
+							<Tippy content="Donate">
+								<NavLink
+									exact="true"
+									activeclassname="active"
+									className="donation-link"
+									to="/donation"
+								>
+									<FontAwesomeIcon
+										icon={faDollarSign}
+										color="#fff"
+										size="2x"
+										className="mx-2"
+									/>
+								</NavLink>
+							</Tippy>
+
 							<button className="btn mb-2 ml-4 m-top" onClick={logout}>
 								Logout
 							</button>
