@@ -68,7 +68,7 @@ function ProjectView({...props}) {
             <AddTaskBoard projectId={projectId}/>
             </>) :
             (
-                <div></div>
+                <AddTaskBoard projectId={projectId}/>
             )
         )}
         </div>

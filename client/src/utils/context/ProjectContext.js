@@ -83,20 +83,6 @@ async function addTaskBoard (taskBoard) {
 		await addTaskMutation({      
 			variables: { ...task_info }
 		  });
-		// let taskBoardId = task_info.board_id.toString();
-		// let destinationBoard = project.taskBoards[taskBoardId];
-
-		// let id = Math.random().toString();
-		// let newTask = { ...task_info, id };
-		// let updatedTasks = [...destinationBoard.tasks, newTask];
-		// let updatedTaskBoard = { ...destinationBoard, tasks: updatedTasks };
-		// let updatedProjectBoards = {
-		// 	...project.taskBoards,
-		// 	[taskBoardId]: updatedTaskBoard,
-		// };
-		// let updatedProject = { ...project, taskBoards: updatedProjectBoards };
-
-		// setProject(updatedProject);
 	};
 
 	const moveTask = async (projectId, fromBoardId, toBoardId, fromIndex, toIndex) => {
