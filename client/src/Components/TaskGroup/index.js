@@ -27,7 +27,7 @@ function TaskGroup({ taskBoard, boardId, projectId }) {
       
         
         <div className="task-group mt-3">
-          <Link  onClick={() => {window.location.href=`/kanban/${boardId}`}}>
+          <Link to={`/kanban/${boardId}`} >
             <h3>{taskBoard.title}</h3>
             <p style={{ opacity: "50%" }}>(Click above to open kanban view)</p>
           </Link>
