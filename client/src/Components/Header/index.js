@@ -58,20 +58,6 @@ const Header = () => {
 							<NavLink
 								exact="true"
 								activeclassname="active"
-								className="task-link"
-								to="/kanban/aaaaaaaaaaaaaaaaaaaaaaaa"
-							>
-								<FontAwesomeIcon
-									icon={faSquareCheck}
-									color="#007f5f"
-									size="2x"
-									className="mx-2"
-								/>
-							</NavLink>
-
-							<NavLink
-								exact="true"
-								activeclassname="active"
 								className="donation-link"
 								to="/donation"
 							>
