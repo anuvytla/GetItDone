@@ -84,7 +84,11 @@ const resolvers = {
 			return Profile.findOneAndDelete({ _id: profileId });
 		},
 		addTaskBoard: async (parent, { title, description, projectId }) => {
-			const newTaskBoard = await TaskBoard.create({ title, description, projectId });
+			const newTaskBoard = await TaskBoard.create({
+				title,
+				description,
+				projectId,
+			});
 			return newTaskBoard;
 		},
 		addTask: async (parent, { title, description, userId, boardId }) => {
@@ -119,6 +123,12 @@ const resolvers = {
 					runValidators: true,
 				}
 			);
+		},
+		addProject: async (parent, { title, description }) => {
+			return Project.create({
+				title,
+				description,
+			});
 		},
 	},
 };

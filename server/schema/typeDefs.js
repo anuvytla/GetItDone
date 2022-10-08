@@ -61,6 +61,7 @@ const typeDefs = gql`
 		): Task
 		updateTaskStatus(_id: ID!, status: String!): Task
 		updateTask(_id: ID!, boardId: ID!): Task
+		addProject(title: String!, description: String): Project
 	}
 `;
 
