@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300&display=swap');
 /* body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -996,13 +997,13 @@ button {
   border-radius: 0.3rem;
   border: 1px solid transparent;
   outline: none;
-  color: #1a1a1a;
-  background-color: #809bce;
+  color: #fff;
+  background-color: #007f5f;
   transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
 }
 
 .btn:hover {
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 .btn.btn-squared {
@@ -1721,17 +1722,42 @@ label form [type='radio'] {
   }
 }
 
-
-
-
 .card-no-border {
   border-style: none !important;
 }
 
 .bg-main {
-  background-color: #b5e48c;
+  background-color: #b8ec8b;
 }
 
 .text-main {
   color: #007f5f;
+}
+
+.topnav-right {  
+  display: flex;
+  margin-top: -2%;    
+  margin-left: 25vw;
+
+}
+
+.m-left{
+  margin-left: 20%;
+}
+
+a{
+  color: #000000;
+  text-decoration: none;
+}
+
+a:hover{
+  color: #007f5f;
+  text-decoration: none;
+}
+
+.header-card {
+  border: 4px solid transparent;
+  background-color: #007f5f;
+  color: #fff;
+  text-align: center;
 }

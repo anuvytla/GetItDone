@@ -27,15 +27,18 @@ const Dashboard = () => {
       
     return (
         <>
+        <h1>Current Projects</h1>
         {isLoading ? (
             <InfinitySpin 
                 width='200'
                 color="#4fa94d"
             />
-        ) : (
+        ) : (         
+            
             state.projects.map(function(project) {
                 return <ProjectCard key={project._id} project={project}/>
             })
+          
         )}
         </>
     )

@@ -11,13 +11,21 @@ export const UPDATE_TASK_STATUS = gql`
 `;
 
 export const ADD_TASK_BOARD = gql`
-	mutation AddTaskBoard($title: String!, $projectId: ID!, $description: String) {
-		addTaskBoard(title: $title, projectId: $projectId, description: $description) {
-	  	_id
-	  	title
-	  	description
+	mutation AddTaskBoard(
+		$title: String!
+		$projectId: ID!
+		$description: String
+	) {
+		addTaskBoard(
+			title: $title
+			projectId: $projectId
+			description: $description
+		) {
+			_id
+			title
+			description
 		}
-  	}
+	}
 `;
 
 export const ADD_TASK = gql`
@@ -42,10 +50,19 @@ export const ADD_TASK = gql`
 `;
 
 export const UPDATE_TASK = gql`
-  mutation updateTask($_id: ID!, $boardId: ID!) {
-    updateTask(_id: $_id, boardId: $boardId) {
-      _id
-      boardId
-    }
-  }
+	mutation updateTask($_id: ID!, $boardId: ID!) {
+		updateTask(_id: $_id, boardId: $boardId) {
+			_id
+			boardId
+		}
+	}
+`;
+
+export const ADD_PROJECT = gql`
+	mutation AddProject($title: String!, $description: String) {
+		addProject(title: $title, description: $description) {
+			title
+			description
+		}
+	}
 `;
