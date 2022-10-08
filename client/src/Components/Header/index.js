@@ -60,7 +60,7 @@ const Header = () => {
 								</NavLink>
 							</Tippy>
 
-							<Tippy content="Home">
+							<Tippy content="Board">
 								<NavLink
 									exact="true"
 									activeclassname="active"
