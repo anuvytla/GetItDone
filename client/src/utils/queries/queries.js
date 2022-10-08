@@ -64,6 +64,7 @@ export const FETCH_PROJECTS_QUERY = gql`
           index
           userId
           boardId
+          status
         }
       }
     }
