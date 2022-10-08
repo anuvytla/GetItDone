@@ -1,4 +1,5 @@
 import React from "react";
+import Tippy from '@tippyjs/react';
 import { Link, NavLink } from "react-router-dom";
 import {
 	faHouse,
@@ -32,56 +33,80 @@ const Header = () => {
 				<div className="display-flex justify-flex-end">
 					{Auth.loggedIn() ? (
 						<>
-							<NavLink exact="true" activeclassname="active" to="/dashboard">
-								<FontAwesomeIcon
-									icon={faHouse}
-									color="#007f5f"
-									size="2x"
-									className="mx-2"
-								/>
-							</NavLink>
+							<Tippy content="Home">
+								<NavLink exact="true" activeclassname="active" to="/dashboard">
+									<FontAwesomeIcon
+										icon={faHouse}
+										color="#007f5f"
+										size="2x"
+										className="mx-2"
+									/>
+								</NavLink>
+							</Tippy>
 
-							<NavLink
-								exact="true"
-								activeclassname="active"
-								className="about-link"
-								to="/home"
-							>
-								<FontAwesomeIcon
-									icon={faCircleInfo}
-									color="#007f5f"
-									size="2x"
-									className="mx-2"
-								/>
-							</NavLink>
+							<Tippy content="About">
+								<NavLink
+									exact="true"
+									activeclassname="active"
+									className="about-link"
+									to="/about"
+								>
+									<FontAwesomeIcon
+										icon={faCircleInfo}
+										color="#007f5f"
+										size="2x"
+										className="mx-2"
+									/>
+								</NavLink>
+							</Tippy>
 
-							<NavLink
-								exact="true"
-								activeclassname="active"
-								className="task-link"
-								to="/kanban/aaaaaaaaaaaaaaaaaaaaaaaa"
-							>
-								<FontAwesomeIcon
-									icon={faSquareCheck}
-									color="#007f5f"
-									size="2x"
-									className="mx-2"
-								/>
-							</NavLink>
+							<Tippy content="Home">
+								<NavLink
+									exact="true"
+									activeclassname="active"
+									className="task-link"
+									to="/kanban/aaaaaaaaaaaaaaaaaaaaaaaa"
+								>
+									<FontAwesomeIcon
+										icon={faSquareCheck}
+										color="#007f5f"
+										size="2x"
+										className="mx-2"
+									/>
+								</NavLink>
+							</Tippy>
 
-							<NavLink
-								exact="true"
-								activeclassname="active"
-								className="donation-link"
-								to="/donation"
-							>
-								<FontAwesomeIcon
-									icon={faDollarSign}
-									color="#007f5f"
-									size="2x"
-									className="mx-2"
-								/>
-							</NavLink>
+							<Tippy content="Notification">
+								<NavLink
+									exact="true"
+									activeclassname="active"
+									className="notification-link"
+									to="/notifications"
+								>
+									<FontAwesomeIcon
+										icon={faBell}
+										color="#007f5f"
+										size="2x"
+										className="mx-2"
+									/>
+								</NavLink>
+							</Tippy>
+
+							<Tippy content="Donate">
+								<NavLink
+									exact="true"
+									activeclassname="active"
+									className="donation-link"
+									to="/donation"
+								>
+									<FontAwesomeIcon
+										icon={faDollarSign}
+										color="#007f5f"
+										size="2x"
+										className="mx-2"
+									/>
+								</NavLink>
+							</Tippy>
 							<button className="btn mb-2 ml-4 m-top" onClick={logout}>
 								Logout
 							</button>
