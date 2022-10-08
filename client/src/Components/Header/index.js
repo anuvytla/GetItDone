@@ -37,7 +37,7 @@ const Header = () => {
 								<NavLink exact="true" activeclassname="active" to="/dashboard">
 									<FontAwesomeIcon
 										icon={faHouse}
-										color="#007f5f"
+										color="#fff"
 										size="2x"
 										className="mx-2"
 									/>
@@ -49,48 +49,17 @@ const Header = () => {
 									exact="true"
 									activeclassname="active"
 									className="about-link"
-									to="/about"
+									to="/home"
 								>
 									<FontAwesomeIcon
 										icon={faCircleInfo}
-										color="#007f5f"
+										color="#fff"
 										size="2x"
 										className="mx-2"
 									/>
 								</NavLink>
 							</Tippy>
-
-							<Tippy content="Board">
-								<NavLink
-									exact="true"
-									activeclassname="active"
-									className="task-link"
-									to="/kanban/aaaaaaaaaaaaaaaaaaaaaaaa"
-								>
-									<FontAwesomeIcon
-										icon={faSquareCheck}
-										color="#007f5f"
-										size="2x"
-										className="mx-2"
-									/>
-								</NavLink>
-							</Tippy>
-
-							<Tippy content="Notification">
-								<NavLink
-									exact="true"
-									activeclassname="active"
-									className="notification-link"
-									to="/notifications"
-								>
-									<FontAwesomeIcon
-										icon={faBell}
-										color="#007f5f"
-										size="2x"
-										className="mx-2"
-									/>
-								</NavLink>
-							</Tippy>
+						
 
 							<Tippy content="Donate">
 								<NavLink
@@ -101,12 +70,13 @@ const Header = () => {
 								>
 									<FontAwesomeIcon
 										icon={faDollarSign}
-										color="#007f5f"
+										color="#fff"
 										size="2x"
 										className="mx-2"
 									/>
 								</NavLink>
 							</Tippy>
+
 							<button className="btn mb-2 ml-4 m-top" onClick={logout}>
 								Logout
 							</button>

@@ -1,7 +1,9 @@
-.card {
-    width: 95%;
-    height: 20%;
-    margin-left: 40px;
-    border: 2px solid #ccc;
-    margin: 5px 5px 5px 5px;
+.k-card {
+    width: 95%; 
+    padding: 5px;   
+    border: 2px solid transparent;
+    border-radius: 10px;
+    margin: 5px 15px 15px 5px;   
+    background-color: #f8edeb;
+    
 }

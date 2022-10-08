@@ -46,6 +46,7 @@ const typeDefs = gql`
 		tasksById(boardId: ID!): [Task]
 		taskBoardsByProject(projectId: ID!): [TaskBoard]
 		projects: [Project]
+		taskStatus(taskId: ID!): Task
 	}
 
 	type Mutation {
