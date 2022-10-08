@@ -38,7 +38,7 @@ const Header = () => {
 								exact="true"
 								activeclassname="active"
 								className="about-link"
-								to="/about"
+								to="/home"
 							>
 								<FontAwesomeIcon icon={faCircleInfo} color="#007f5f" size="2x" className="mx-2"/>
 							</NavLink>
@@ -50,15 +50,6 @@ const Header = () => {
 								to="/kanban/aaaaaaaaaaaaaaaaaaaaaaaa"
 							>
 								<FontAwesomeIcon icon={faSquareCheck} color="#007f5f" size="2x" className="mx-2"/>
-							</NavLink>
-
-							<NavLink
-								exact="true"
-								activeclassname="active"
-								className="notification-link"
-								to="/notifications"
-							>
-								<FontAwesomeIcon icon={faBell} color="#007f5f" size="2x" className="mx-2"/>
 							</NavLink>
 
 							<NavLink
