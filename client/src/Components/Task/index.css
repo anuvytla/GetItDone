@@ -5,5 +5,16 @@
     border-radius: 10px;
     margin: 5px 15px 15px 5px;   
     background-color: #f8edeb;
-    
+}
+
+.card-doing {
+    background-color: #ffda61;
+}
+
+.card-todo {
+    background-color: #f7887d;
+}
+
+.card-done {
+    background-color: #68d89b;
 }
