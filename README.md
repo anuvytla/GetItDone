@@ -111,6 +111,9 @@ Functionality to assign task to specific users
 - Github - [Monkonjay](https://github.com/Monkonjay)
 --------------------------------------------------------------
 
+- Professional Portfolio - [Max McLaughlin](https://lafflin.github.io/Portfolio/)
+- Github - [Lafflin](https://github.com/lafflin)
+
 
 
 ## Acknowledgments
